@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-const bar = '█'
+import CalculatorModal from './CalculatorModal'
+const bar = '▀'
 const BaseSats = () => {
     const [charm, setCharm] = useState('');
     const [cool, setCool] = useState('');
@@ -21,34 +21,34 @@ const BaseSats = () => {
                     < h2 className="text-3xl text-left pl-2">Charm: {charm}</h2>
                     <div> <button onClick={() => {
 
-                        setCharm(`${charm} ${bar}`)
+                        setCharm(`${charm}${bar}`)
                     }}>+</button ></div>
                 </li>
                 <li className="bg-slate-600 mt-2 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
                     < h2 className="text-3xl text-left pl-2">Cool: {cool}</h2>
                     <button onClick={() => {
 
-                        setCool(`${cool} ${bar}`)
+                        setCool(`${cool}${bar}`)
                     }}>+</button>
                 </li>
                 <li className="bg-slate-600 mt-2 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
                     < h2 className="text-3xl text-left pl-2">Sharp: {sharp}</h2>
                     <button onClick={() => {
 
-                        setSharp(`${sharp} ${bar}`)
+                        setSharp(`${sharp}${bar}`)
                     }}>+</button>
                 </li>
                 <li className="bg-slate-600 mt-2 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
                     < h2 className="text-3xl text-left pl-2">Tough: {tough}</h2>
                     <button onClick={() => {
 
-                        setTough(`${tough} ${bar}`)
+                        setTough(`${tough}${bar}`)
                     }}>+</button>
                 </li>
                 <li className="bg-slate-600 mt-2 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
                     < h2 className="text-3xl text-left pl-2">Weird: {weird}</h2><button onClick={() => {
 
-                        setWeird(`${weird} ${bar}`)
+                        setWeird(`${weird}${bar}`)
                     }}>+</button>
                 </li>
                 <li className="bg-slate-600 mt-2 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
@@ -59,9 +59,9 @@ const BaseSats = () => {
                         if (count > 3) {
                             setCount(0);
                             setExp('');
-                            setLevel(level + ' ' + bar)
+                            setLevel(level + bar)
                         } else {
-                            setExp(exp == '' ? bar : exp + ' ' + bar)
+                            setExp(exp == '' ? bar : exp + bar)
 
                             setCount(count + 1);
                         }
@@ -71,6 +71,7 @@ const BaseSats = () => {
                     < h2 className="text-3xl text-left pl-2">Level: {level}</h2>
                 </li>
             </ul>
+            <CalculatorModal />
         </>
     )
 }
