@@ -56,3 +56,7 @@ const characterSchema = new Schema({
         maxlength: 280
     }
 })
+
+const Character = model('Character', characterSchema);
+
+module.exports = Character;
