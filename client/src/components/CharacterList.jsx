@@ -2,19 +2,11 @@ import React, { useState, useEffect } from "react";
 import StepBtn from "./StepBtn";
 import ListInputCopmponent from "./ListInputComponent";
 
-const CharacterList = ({ listName }) => {
+const CharacterList = ({ listName, handleChange }) => {
 
     // callback hook to pass to child list items
    // callback hook to pass to child list items
-   const handleChange = (ev, setInputCallBack) => {
-    ev.preventDefault();
-    const target = ev.target;
 
-    if (target.type == "textarea") {
-        setDescription(target.value);
-    } else setInputCallBack(target.value);
-
-}
     return (
 
         <div className="flex flex-row flex-wrap w-70 justify-center [&_*]:text-center p-1 ">

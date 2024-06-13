@@ -7,15 +7,19 @@ import '../App.css'
 const ListInputCopmponent = ({ placeholder, handleChange }) => {
     const [key, setKey] = useState(uuidv4());
     const [input, setInput] = useState('');
+    const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3')
+    const [uuid, setUuid] = useState(uuidv4());
 
+    //when state updates, log thew new state
     useEffect(()=> {
+
         console.log(...['state updated\n', `input: ${input}`])
     }, [input])
 
     const _handleChange = (ev) => handleChange(ev, setInput);
     return (
-        <li key={key} className="border-b-2 border-red-900">
-            <input className="w-full" type="text" onChange={_handleChange} placeholder={placeholder ? placeholder : 'Your input here <3'} />
+        <li key={uuid} className="border-b-2 border-red-900">
+            <input className="w-full" type="text" onChange={_handleChange} placeholder={_placeholder} />
         </li>
     );
 
