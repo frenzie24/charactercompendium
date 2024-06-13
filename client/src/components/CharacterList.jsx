@@ -11,16 +11,21 @@ const CharacterList = ({ listName }) => {
             </div>
             <StepBtn onClick={() => { }} symbol={'-'} />
             <div className="w-56">
-            <input className="h-10" type="text" placeholder={`${listName} Card`} />
-                <input className="w-full" type="text" placeholder={`${listName}  Name`} />
-
-                <input className="w-full" type="text" placeholder={`${listName}  Name`} />
-
-
-
-                <input className="w-full" type="text" placeholder={`${listName}  Name`} />
-
-                <input className="w-full" type="text" placeholder={`${listName}  Name`} />
+                <input className="h-10 w-full" type="text" placeholder={`${listName} Card`} />
+                <ul>
+                    <li>
+                        <input className="w-full" type="text" placeholder={`${listName} Name`} />
+                    </li>
+                    <li>
+                        <input className="w-full" type="text" placeholder={`${listName} Name`} />
+                    </li>
+                    <li>
+                        <input className="w-full" type="text" placeholder={`${listName} Name`} />
+                    </li>
+                    <li>
+                        <input className="w-full" type="text" placeholder={`${listName} Name`} />
+                    </li>
+                </ul>
             </div>
 
 

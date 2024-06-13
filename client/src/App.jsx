@@ -14,8 +14,10 @@ function App() {
 
   return (
     <>
-      <BaseStats />
-         <CharacterList listName={"Skill"} />
+    <div className='flex flex-row flex-wrap w-screen justify-between items-center px-20 bg-purple-600'>
+      <BaseStats name={"Chadness"} val={5} progress={"▀"} />
+      <CharacterList listName={"Skill"} />
+      </div>
 
     </>
   )
