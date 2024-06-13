@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CalculatorModal from './CalculatorModal'
+
 const bar = '▀'
 const BaseSats = ({ name, val, progress }) => {
     const [stats, setStats] = useState([{ name, val, progress }]);
