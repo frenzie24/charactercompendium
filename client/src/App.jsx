@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BaseStats from './components/BaseStats'
+import BaseStats from '../../RND/BaseStats'
 import './App.css'
 
 import CharacterList from './components/CharacterList'

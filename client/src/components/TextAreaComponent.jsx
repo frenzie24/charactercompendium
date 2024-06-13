@@ -6,7 +6,6 @@ const TextAreaComponent = () => {
     const [description, setDescription] = useState('');
 
     const handleChange =(ev) => {
-        debugger;
         ev.preventDefault();
         const target = ev.target;
 
