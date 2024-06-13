@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import '../App.css'
 
 const ImageComponent = ({src, caption}) => {
-    const [_src, setSrc] = useState(src ? src : '../assets/notfound.jpg');
+    const [_src, setSrc] = useState(src ? src : './notfound.jpg');
     const [_caption, setCaption] = useState(caption ? caption : "Couldn't find the image we were looking for!")
     return(
         <>
-            <figure>
-                <img src={_src} className="size-72" alt="caption" />
-                <figcaption>{_caption}</figcaption>
+            <figure className="size-64 flex flex-row flex-wrap justify-center">
+                <img className="w-fit size-52" src={_src} alt="caption" />
+                <figcaption className="text-center text-xs">{_caption}</figcaption>
             </figure>
         </>
     )
