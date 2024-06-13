@@ -19,7 +19,7 @@ const BaseSats = () => {
             <ul className="min-w-[600px]">
                 <li className="bg-slate-600 mt-2 p-1 p-2 flex flex-row flex-wrap [&_*]:w-full justify-between items-center rounded-lg">
                     < h2 className="text-3xl text-left pl-2">Charm: {charm}</h2>
-                    <div> <button onClick={() => {
+                    <div> <button className="min-w-4" onClick={() => {
 
                         setCharm(`${charm}${bar}`)
                     }}>+</button ></div>

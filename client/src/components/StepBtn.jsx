@@ -1,21 +1,15 @@
-import React from 'react';
+import React, { Button } from 'react';
+import '../App.css'
+const StepBtn = (props) => {
 
-const StepBtn = ({ onClick }) => {
-  const buttonStyle = {
-    backgroundColor: '#CD7F32', // Bronze color
-    color: 'white',
-    border: 'none',
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-    borderRadius: '5px',
-  };
 
-  return (
-    <button style={buttonStyle} onClick={onClick}>
-      +
-    </button>
-  );
+    return (
+        <div className="p-1">
+        <button className='rounded-full text-white flex justify-center items-center size-6 bg-neutral-500 p-1' onClick={props.onClick}>
+           {props.symbol}
+        </button>
+        </div>
+    );
 };
 
 export default StepBtn;
