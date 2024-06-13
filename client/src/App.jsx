@@ -14,11 +14,14 @@ function App() {
 
   return (
     <>
-    <div className='flex flex-row flex-wrap w-screen justify-between items-center px-20 bg-purple-900'>
-      {/*<BaseStats name={"Chadness"} val={5} progress={"▀"} /> */}
-      <CharacterList listName={"Stat"} />
-      <TextAreaComponent />
-      <CharacterList listName={"Skill"} />
+      <div className='flex flex-row flex-wrap w-screen justify-between items-center px-20 bg-purple-900'>
+        {/*<BaseStats name={"Chadness"} val={5} progress={"▀"} /> */}
+        <CharacterList listName={"Stat"} />
+        <div className=''>
+          <TextAreaComponent placeholder={{ label: 'Feats and Description' }} />
+          <TextAreaComponent placeholder={{ label: 'Your character content here' }} />
+        </div>
+        <CharacterList listName={"Skill"} />
       </div>
 
     </>

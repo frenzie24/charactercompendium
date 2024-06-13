@@ -5,16 +5,19 @@ import ListInputCopmponent from "./ListInputComponent";
 const CharacterList = ({ listName }) => {
 
     // callback hook to pass to child list items
-    const handleChange = (ev, setInputCallBack) => {
-        ev.preventDefault();
-        const target = ev.target;
+   // callback hook to pass to child list items
+   const handleChange = (ev, setInputCallBack) => {
+    ev.preventDefault();
+    const target = ev.target;
 
-       setInputCallBack(target.value);
+    if (target.type == "textarea") {
+        setDescription(target.value);
+    } else setInputCallBack(target.value);
 
-    }
+}
     return (
 
-        <div className="flex flex-row flex-wrap w-70 justify-center [&_*]:text-center p-1">
+        <div className="flex flex-row flex-wrap w-70 justify-center [&_*]:text-center p-1 ">
 
             <StepBtn onClick={() => { }} symbol={'-'} />
             <div className="w-60 py-4 [&_*]:w-52 bg-gray-800 rounded-md flex flex-row flex-wrap justify-center">

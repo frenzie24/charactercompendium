@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-//returns a flex element with an input field for a label and a text area for description
-const TextAreaComponent = () => {
+//returns a flex element with an input field for a label and a text area for content
+const TextAreaComponent = ({ placeholder, handleChange }) => {
     const [input, setInput] = useState('');
-    const [description, setDescription] = useState('');
+    const [content, setContent] = useState('');
 
-    const handleChange =(ev) => {
-        ev.preventDefault();
-        const target = ev.target;
+    const labelPlaceHolder = placeholder ? placeholder.label ? placeholder.label : "Your label here" : "Your label here";
+    const contentPlaceHolder = placeholder ? placeholder.content ? placeholder.content : "Your content here" : "Your content here";
 
-        if(target.type == "textarea") {
-            setDescription(target.value);
-        } else setInput(target.value);
 
-    }
+    const _handleChange = (ev) => handleChange(ev, setInput);
 
-    useEffect(()=> {
-        console.log(...['state updated\n', `input: ${input}\ndescription: ${description}`])
-    }, [input, description])
+
+    useEffect(() => {
+        console.log(...['state updated\n', `input: ${input}\ndescription: ${content}`])
+    }, [input, content])
 
 
     return (
         <section className="flex flex-row flex-wrap justify-center items-center">
-            <input id="" className="w-full text-center" placeholder="LABEL" onChange={handleChange} value={input}></input>
-            <textarea id="" className="w-full text-center min-h-" placeholder="DESCRITION" onChange={handleChange} value={description}></textarea>
+            <input id="" className="w-full text-center" placeholder={labelPlaceHolder} onChange={_handleChange} value={input}></input>
+            <textarea id="" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={_handleChange} value={content}></textarea>
         </section>
     )
 
