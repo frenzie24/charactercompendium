@@ -18,7 +18,7 @@ const TextAreaComponent = ({ placeholder, handleChange }) => {
 
 
     return (
-        <section className="flex flex-row flex-wrap justify-center items-center">
+        <section className="flex flex-row flex-wrap justify-center items-center rounded-md bg-green-500 p-2">
             <input id="" className="w-full text-center" placeholder={labelPlaceHolder} onChange={_handleChange} value={input}></input>
             <textarea id="" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={_handleChange} value={content}></textarea>
         </section>
