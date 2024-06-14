@@ -12,11 +12,11 @@ const characterSchema = new Schema({
     },
     health: {
         current: {
-            type: Number,
+            type: Schema.Types.BigInt,
             default: 1
         },
         max: {
-            type: Number,
+            type: Schema.Types.BigInt,
             default: 1
         }
     },
@@ -46,15 +46,15 @@ const characterSchema = new Schema({
             required: false
         }
     }],
-    inventory: {
+    inventory: [{
         type: String,
-        maxlength: 500
-    },
-    notes: {
+        maxlength: 1000
+    }],
+    notes: [{
         type: String,
         required: false,
         maxlength: 280
-    }
+    }]
 })
 
 const Character = model('Character', characterSchema);
