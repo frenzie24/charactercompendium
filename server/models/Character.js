@@ -2,6 +2,10 @@ const { Schema, model } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 const characterSchema = new Schema({
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     characterName: {
         type: String,
         required: true
