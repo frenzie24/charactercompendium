@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.bgimage {
+    background-image: url("./label.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align:center;
+}

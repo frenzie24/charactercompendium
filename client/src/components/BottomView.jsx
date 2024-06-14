@@ -14,7 +14,7 @@ const BottomView = () => {
     }
 
     return (
-        <section className="w-full grid lg:grid-row-1">
+        <section className="w-full flex flex-row flex-wrap">
             <ListView listName={"Stat"} HandleChange={handleChange} />
             <div className="w-[500px]">
                 <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={handleChange} />
