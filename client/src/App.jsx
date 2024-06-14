@@ -15,7 +15,7 @@ function App() {
     <>
       <div className='flex flex-row flex-wrap w-screen justify-between items-start px-5 py-5 bg-purple-900'>
 
-    {/*<SheetBottom />*/}
+    <SheetBottom />
     <ImageComponent />
       </div>
 

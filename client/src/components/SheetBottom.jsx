@@ -1,6 +1,6 @@
 import React from "react";
 
-import CharacterList from './CharacterList'
+import ListView from './ListView'
 import TextAreaComponent from './TextAreaComponent'
 
 const SheetBottom = () => {
@@ -14,12 +14,12 @@ const SheetBottom = () => {
     }
 
     return (
-        <>  <CharacterList listName={"Stat"} handleChange={handleChange} />
+        <>  <ListView listName={"Stat"} handleChange={handleChange} />
             <div className=''>
                 <TextAreaComponent placeholder={{ label: 'Feats and Description' }} handleChange={handleChange} />
                 <TextAreaComponent placeholder={{ label: 'Your character content here' }} handleChange={handleChange} />
             </div>
-            <CharacterList listName={"Skill"} handleChange={handleChange} />
+            <ListView listName={"Skill"} handleChange={handleChange} />
         </>
     );
 }
