@@ -14,9 +14,9 @@ const BottomView = () => {
     }
 
     return (
-        <section className="w-full">
+        <section className="w-full grid lg:grid-row-1">
             <ListView listName={"Stat"} HandleChange={handleChange} />
-            <div className=''>
+            <div className="w-[500px]">
                 <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={handleChange} />
                 <TextAreaView placeholder={{ label: 'Your character content here' }} HandleChange={handleChange} />
             </div>

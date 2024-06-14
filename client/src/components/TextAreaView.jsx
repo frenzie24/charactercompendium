@@ -14,14 +14,16 @@ const TextAreaView = ({ placeholder, HandleChange }) => {
         contentPlaceHolder = validateState(placeholder.content, "Content");
     }
 
-    const handleChange = (ev) => {
-        if (ev.target.id === 'input') HandleChange(ev, setInput);
-        else HandleChange(ev, setContent);
+    const handleInputChange = (ev) => {
+      HandleChange(ev, setInput);
     }
+
+        // when content's value changes handle it through our call back... why am i sending setcontent instead of the paramLOL
+    const handleContentChange = (ev)=> HandleChange(ev, setContent);
 
     useEffect(() => {
 
-        let t = uuidv4();
+
 
         console.log(...['state updated\n', `input: ${input}\ndescription: ${content}`])
     }, [input, content])
@@ -32,8 +34,8 @@ const TextAreaView = ({ placeholder, HandleChange }) => {
 
         <li key={uuid} className="flex flex-row flex-wrap justify-center items-center rounded-md bg-green-500 p-2">
             <>
-            <input id="input" className="w-full text-center" placeholder={labelPlaceHolder} onChange={handleChange} value={input}></input>
-            <textarea id="content" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleChange} value={content}></textarea>
+            <input id="input" className="w-full text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={input}></input>
+            <textarea id="content" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleContentChange} value={content}></textarea>
             </>
         </li>
     );
