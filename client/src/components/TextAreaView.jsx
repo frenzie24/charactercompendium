@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import validateState from "../utils/validateState";
 
 //returns a flex element with an input field for a label and a text area for content
-const TextAreaView = ({ placeholder, handleChange }) => {
+const TextAreaView = ({ placeholder, HandleChange }) => {
     const [input, setInput] = useState('');
     const [content, setContent] = useState('');
     const [uuid, setUuid] = useState(uuidv4());
@@ -14,9 +14,9 @@ const TextAreaView = ({ placeholder, handleChange }) => {
         contentPlaceHolder = validateState(placeholder.content, "Content");
     }
 
-    const _handleChange = (ev) => {
-        if (ev.target.id === 'input') handleChange(ev, setInput);
-        else handleChange(ev, setContent);
+    const handleChange = (ev) => {
+        if (ev.target.id === 'input') HandleChange(ev, setInput);
+        else HandleChange(ev, setContent);
     }
 
     useEffect(() => {
@@ -26,13 +26,15 @@ const TextAreaView = ({ placeholder, handleChange }) => {
         console.log(...['state updated\n', `input: ${input}\ndescription: ${content}`])
     }, [input, content])
 
+    // we should move the li tag out this component!
 
     return (
 
         <li key={uuid} className="flex flex-row flex-wrap justify-center items-center rounded-md bg-green-500 p-2">
-            <input id="input" className="w-full text-center" placeholder={labelPlaceHolder} onChange={_handleChange} value={input}></input>
-            <textarea id="content" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={_handleChange} value={content}></textarea>
-
+            <>
+            <input id="input" className="w-full text-center" placeholder={labelPlaceHolder} onChange={handleChange} value={input}></input>
+            <textarea id="content" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleChange} value={content}></textarea>
+            </>
         </li>
     );
 

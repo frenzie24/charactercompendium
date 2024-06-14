@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-import SheetBottom from './components/SheetBottom'
+import BottomView from './components/BottomView'
 import ImageView from './components/ImageView';
 function App() {
   const [count, setCount] = useState(0)
@@ -14,9 +14,9 @@ function App() {
   return (
     <>
       <div className='flex flex-row flex-wrap w-screen justify-between items-start px-5 py-5 bg-purple-900'>
+      <ImageView />
+    <BottomView />
 
-    <SheetBottom />
-    <ImageView />
       </div>
 
     </>
