@@ -1,4 +1,4 @@
-const typeDefs =`
+const typeDefs = `
   type User {
     _id: ID
     username: String
@@ -10,12 +10,17 @@ const typeDefs =`
     _id: ID
     characterName: String!
     characterClass: String!
-    health: [Int]
+    health: Health
     defense: String
     baseStat: [BaseStat]
     skill: [Skill]
     inventory: [String]
     notes: [String]
+  }
+
+  type Health {
+  current: Int
+  max: Int
   }
 
   type BaseStat {
@@ -34,20 +39,14 @@ const typeDefs =`
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
-    characters(username: String): [Character]
-    character(characterId: ID!): Character
-    me: User
+  users: [User]
+  characters: [Character]
   }
-
+ 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addCharacter(characterName: String!, type: String!, habitat: String!, weaknesses: [String]!): Character
-    updateCharacter(characterId: ID!, characterName: String, type: String, habitat: String, weaknesses: [String]): Character
-      removeCharacter(characterId: ID!): Character
+  addUser(username: String!, email: String!, password: String!): Auth
   }
 `
+
 
 module.exports = typeDefs;

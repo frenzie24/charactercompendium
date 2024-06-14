@@ -3,47 +3,10 @@
         "userID": "666b962d538a1a2c8f31b125",
         "characterName": "Naoya",
         "characterClass": "Witch",
-        "health": {
-            "current": 1,
-            "max": 2
-        },
+        "health": "1/2",
         "defense": "+1",
-        "baseStat": [
-            {
-                "name": "STR",
-                "value": "10"
-            },
-            {
-                "name": "DEX",
-                "value": "15"
-            },
-            {
-                "name": "CON",
-                "value": "13"
-            },
-            {
-                "name": "WIS",
-                "value": "14"
-            },
-            {
-                "name": "INT",
-                "value": "17"
-            },
-            {
-                "name": "CHA",
-                "value": "8"
-            }
-        ],
-        "skill": [
-            {
-                "name": "Knowledge Arcana",
-                "value": 5
-            },
-            {
-                "name": "Stealth",
-                "value": 3
-            }
-        ],
+        "baseStat": ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
+        "skill": ["Arcana:5", "Stealth:3"],
         "inventory": [
             "One Spellbook"
         ],

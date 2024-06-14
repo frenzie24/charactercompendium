@@ -15,40 +15,17 @@ const characterSchema = new Schema({
         required: true
     },
     health: {
-        current: {
-            type: Schema.Types.BigInt,
-            default: 1
-        },
-        max: {
-            type: Schema.Types.BigInt,
-            default: 1
-        }
+        type: String
     },
     defense: {
         type: String,
         required: false
     },
     baseStat: [{
-        name: {
-        type: String,
-        required: true
-        },
-        value: {
-            type: Number,
-            default: 0
-        }
-    }
-    ],
+        type: String
+    }],
     skill: [{
-        name: {
-            type: String,
-            required: true
-        },
-        value: {
-            type: Number,
-            default: 0,
-            required: false
-        }
+        type: String
     }],
     inventory: [{
         type: String,
