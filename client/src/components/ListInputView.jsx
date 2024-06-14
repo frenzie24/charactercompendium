@@ -20,7 +20,7 @@ const ListInputView = ({ placeholder, HandleChange }) => {
     const handleChange = (ev) => HandleChange(ev, setInput);
 
     return (
-        <li key={key} className="border-b-2 border-red-900">
+        <li key={key} className="border-b-2 border-red-900 ">
             <input className="w-full" type="text" onChange={handleChange} placeholder={_placeholder} />
         </li>
     );
