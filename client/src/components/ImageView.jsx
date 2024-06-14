@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../App.css'
 
-const ImageComponent = ({src, caption}) => {
+const ImageView = ({src, caption}) => {
     const [_src, setSrc] = useState(src ? src : './notfound.jpg');
     const [_caption, setCaption] = useState(caption ? caption : "Couldn't find the image we were looking for!")
     return(
@@ -14,4 +14,4 @@ const ImageComponent = ({src, caption}) => {
     )
 }
 
-export default ImageComponent;
+export default ImageView;

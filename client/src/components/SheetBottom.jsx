@@ -1,7 +1,7 @@
 import React from "react";
 
 import ListView from './ListView'
-import TextAreaComponent from './TextAreaComponent'
+import TextAreaView from './TextAreaView'
 
 const SheetBottom = () => {
 
@@ -16,8 +16,8 @@ const SheetBottom = () => {
     return (
         <>  <ListView listName={"Stat"} handleChange={handleChange} />
             <div className=''>
-                <TextAreaComponent placeholder={{ label: 'Feats and Description' }} handleChange={handleChange} />
-                <TextAreaComponent placeholder={{ label: 'Your character content here' }} handleChange={handleChange} />
+                <TextAreaView placeholder={{ label: 'Feats and Description' }} handleChange={handleChange} />
+                <TextAreaView placeholder={{ label: 'Your character content here' }} handleChange={handleChange} />
             </div>
             <ListView listName={"Skill"} handleChange={handleChange} />
         </>

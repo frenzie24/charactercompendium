@@ -4,7 +4,7 @@ import '../App.css'
 
 // returns a li with input.  key attribute is created through uuid
 
-const ListInputCopmponent = ({ placeholder, handleChange }) => {
+const ListInputView = ({ placeholder, handleChange }) => {
     const [key, setKey] = useState(uuidv4());
     const [input, setInput] = useState('');
     const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3')
@@ -16,7 +16,7 @@ const ListInputCopmponent = ({ placeholder, handleChange }) => {
     }, [input])
 
     // our change hanlder alllll the way from SheetBottom
-    // component flow goes SheetBottom -> ListView -> ListInputComponent
+    // component flow goes SheetBottom -> ListView -> ListInputView
     const _handleChange = (ev) => handleChange(ev, setInput);
 
     return (
@@ -27,4 +27,4 @@ const ListInputCopmponent = ({ placeholder, handleChange }) => {
 
 }
 
-export default ListInputCopmponent;
+export default ListInputView;

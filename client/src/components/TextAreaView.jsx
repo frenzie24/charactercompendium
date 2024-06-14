@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import validateState from "../utils/validateState";
 
 //returns a flex element with an input field for a label and a text area for content
-const TextAreaComponent = ({ placeholder, handleChange }) => {
+const TextAreaView = ({ placeholder, handleChange }) => {
     const [input, setInput] = useState('');
     const [content, setContent] = useState('');
     const [uuid, setUuid] = useState(uuidv4());
@@ -39,4 +39,4 @@ const TextAreaComponent = ({ placeholder, handleChange }) => {
 
 }
 
-export default TextAreaComponent
+export default TextAreaView
