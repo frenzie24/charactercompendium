@@ -40,6 +40,8 @@ const typeDefs = `
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   addCharacter(characterName: String!, characterClass: String!, health: String, baseStat: [String], skill: [String], inventory: [String], notes: [String]): Character
+  updateCharacter(characterId: ID!, characterName: String, characterClass: String, health: String, baseStat: [String], skill: [String], inventory: [String], notes: [String]): Character
+  removeCharacter(characterId: ID!): Character
   }
 `
 

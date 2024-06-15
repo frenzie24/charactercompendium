@@ -7,7 +7,7 @@ const resolvers = {
             return User.find()
         },
         user: async (parent, { userId }) => {
-            return User.findById( {_id: userId} ).populate('characters')
+            return User.findById({ _id: userId }).populate('characters')
         },
         characters: async () => {
             return Character.find()
@@ -50,8 +50,8 @@ const resolvers = {
         addCharacter: async (parent, { characterName, characterClass, health, defense, baseStat, skill, inventory, notes }, context) => {
             if (!context.user) {
                 throw new Error('Authentication error');
-              }
-              const newCharacter = new Character({
+            }
+            const newCharacter = new Character({
                 userID: context.user._id,
                 characterName,
                 characterClass,
@@ -61,10 +61,41 @@ const resolvers = {
                 skill,
                 inventory,
                 notes
-              });
-              await newCharacter.save();
-        
-              return newCharacter;
+            });
+            await newCharacter.save();
+
+            return newCharacter;
+        },
+        updateCharacter: async (parent, { characterId, characterName, characterClass, health, defense, baseStat, skill, inventory, notes }) => {
+            const updateFields = {};
+            if (characterName) updateFields.characterName = characterName;
+            if (characterClass) updateFields.characterClass = characterClass;
+            if (health) updateFields.health = health;
+            if (defense) updateFields.defense = defense;
+            if (baseStat) updateFields.baseStat = baseStat;
+            if (skill) updateFields.skill = skill;
+            if (inventory) updateFields.inventory = inventory;
+            if (notes) updateFields.notes = notes;
+
+            try {
+                // Update the character in the database
+                const updatedCharacter = await Character.findByIdAndUpdate(
+                    { _id: characterId },
+                    { $set: updateFields },
+                    { new: true } // To return the updated document
+                );
+
+                return updatedCharacter;
+            } catch (error) {
+                throw new Error(`Failed to update character: ${error.message}`);
+            }
+        },
+        removeCharacter: async (parent, { characterId }, context) => {
+            const character = await Character.findOneAndDelete({
+                _id: characterId,
+            });
+
+            return character;
         }
     }
 }
