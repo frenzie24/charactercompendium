@@ -1,10 +1,7 @@
 /*test
 
   type Query {
-    users: [User]
-    user(username: String!): User
     characters(username: String): [Character]
-    character(characterId: ID!): Character
     parties: [Party]
     party(partyId: ID!): Party 
     me: User

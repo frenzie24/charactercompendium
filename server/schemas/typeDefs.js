@@ -10,27 +10,17 @@ const typeDefs = `
     _id: ID
     characterName: String!
     characterClass: String!
-    health: Health
+    health: String
     defense: String
-    baseStat: [BaseStat]
-    skill: [Skill]
+    baseStat: [String]
+    skill: [String]
     inventory: [String]
     notes: [String]
   }
 
-  type Health {
-  current: Int
-  max: Int
-  }
-
-  type BaseStat {
+  type Party {
   name: String
-  value: Int
-  }
-
-  type Skill {
-  name: String
-  value: Int
+  characters: [Character]
   }
 
   type Auth {
@@ -40,11 +30,16 @@ const typeDefs = `
 
   type Query {
   users: [User]
+  user(userId: ID!): User
   characters: [Character]
+  character(characterId: ID!): Character
+  parties: [Party]
   }
  
   type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
+  addCharacter(characterName: String!, characterClass: String!, health: String, baseStat: [String], skill: [String], inventory: [String], notes: [String]): Character
   }
 `
 

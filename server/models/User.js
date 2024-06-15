@@ -34,6 +34,13 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+// Establishing a relationship to Characters
+userSchema.virtual('characters', {
+  ref: 'Character',
+  localField: '_id',
+  foreignField: 'userID'
+});
+
 const User = model("User", userSchema);
 
 module.exports = User;
