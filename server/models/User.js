@@ -21,6 +21,7 @@ const userSchema = new Schema({
   },
 });
 
+// salt rounds runs the hashing on this password 10 times.
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;

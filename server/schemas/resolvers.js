@@ -109,6 +109,7 @@ const resolvers = {
                 throw new Error(`Failed to update character: ${error.message}`);
             }
         },
+        // original removal without authentication or verification
         // removeCharacter: async (parent, { characterId }, context) => {
         //     const character = await Character.findOneAndDelete({
         //         _id: characterId,
