@@ -96,7 +96,51 @@ const resolvers = {
             });
 
             return character;
-        }
+        },
+        createParty: async (parent, { name }) => {
+            try {
+              // Create a new party with the provided name
+              const newParty = await Party.create({ name });
+      
+              return newParty;
+            } catch (error) {
+              throw new Error(`Failed to create party: ${error.message}`);
+            }
+          },
+        updateParty: async (parent, { partyId, characterIds }) => {
+            try {
+                // Find the party by ID
+                const party = await Party.findById(partyId);
+
+                if (!party) {
+                    throw new Error(`Party with ID ${partyId} not found`);
+                }
+
+                // Update the party's characters with the provided character IDs
+                party.characters = characterIds;
+
+                await party.save();
+
+                return party;
+            } catch (error) {
+                throw new Error(`Failed to update party characters: ${error.message}`);
+            }
+        },
+
+        removeParty: async (parent, { partyId }) => {
+            try {
+                // Find the party by ID and remove it
+                const party = await Party.findByIdAndDelete(partyId);
+
+                if (!party) {
+                    throw new Error(`Party with ID ${partyId} not found`);
+                }
+
+                return party;
+            } catch (error) {
+                throw new Error(`Failed to remove party: ${error.message}`);
+            }
+        },
     }
 }
 

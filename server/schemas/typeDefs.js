@@ -42,6 +42,9 @@ const typeDefs = `
   addCharacter(characterName: String!, characterClass: String!, health: String, baseStat: [String], skill: [String], inventory: [String], notes: [String]): Character
   updateCharacter(characterId: ID!, characterName: String, characterClass: String, health: String, baseStat: [String], skill: [String], inventory: [String], notes: [String]): Character
   removeCharacter(characterId: ID!): Character
+  createParty(name: String!): Party
+  updateParty(partyId: ID!, characterIds: [ID]!): Party
+  removeParty(partyId: ID!): Party
   }
 `
 
