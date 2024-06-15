@@ -5,6 +5,10 @@ import '../App.css'
 // returns a li with input.  key attribute is created through uuid
 
 const ListInputView = ({ placeholder, HandleChange }) => {
+    // we need the key state for when we add a list item to the list
+    // same with id!
+    // key *only* needs to be unique per list so uuid is likely overkill
+
     const [key, setKey] = useState(uuidv4());
     const [input, setInput] = useState('');
     const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3')

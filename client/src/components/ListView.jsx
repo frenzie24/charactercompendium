@@ -6,6 +6,7 @@ import '../App.css'
 
 // the same HandleChange we sent from the parent will be used to handle change on this component.
 // It will also be passed to this component's children
+// ## TODO: need to toggle input disabled state when editing
 const ListView = ({ listName, HandleChange }) => {
 
     // declare state variables and use validateState script to assign their state

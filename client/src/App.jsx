@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 
 import BottomView from './components/BottomView'
-
+// need to add routing !
 import TopView from './components/TopView'
 import ImageView from './components/ImageView';
 import PrimaryAttribute from './components/PrimaryAttribute';
 import LabelView from './components/LabelView';
 import LabelContainer from './components/LabelContainer';
+
+// i never remove count state from app, because I almost always eventually end up needing it at this level
 function App() {
   const [count, setCount] = useState(0)
   const symbol = '+';
@@ -15,7 +17,7 @@ function App() {
   const handleClick = (ev) => {
 
   }
-
+  // THE parent handleChange hook, use this as an example when creating edit, save, and post hooks
   const handleChange = (ev, setCallBackState) => {
     // ev.preventDefault();
     const target = ev.target;
@@ -23,7 +25,7 @@ function App() {
     setCallBackState(target.value);
 
 }
-
+    // we need to take this and make a view for the character sheet
   return (
     <>
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
