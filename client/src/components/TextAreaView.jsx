@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import validateState from "../utils/validateState";
-
+import '../App.css'
 //returns a flex element with an input field for a label and a text area for content
 const TextAreaView = ({ placeholder, HandleChange }) => {
     const [input, setInput] = useState('');
@@ -31,10 +31,10 @@ const TextAreaView = ({ placeholder, HandleChange }) => {
 
     return (
 
-        <li key={uuid} className="flex flex-row flex-wrap justify-center items-center rounded-md bg-green-500 w-96 p-2">
+        <li key={uuid} className="framebg flex flex-row flex-wrap justify-center items-center rounded-md w-96 p-2">
             {/*<>*/}
-            <input id="input" className="w-full text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={input}></input>
-            <textarea id="content" className="w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleContentChange} value={content}></textarea>
+            <input id="input" className="inputbg w-full text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={input}></input>
+            <textarea id="content" className="textareabg w-full text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleContentChange} value={content}></textarea>
             {/*</>*/}
         </li>
     );

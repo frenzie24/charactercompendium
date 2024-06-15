@@ -9,3 +9,33 @@
     background-position: center;
     vertical-align:center;
 }
+
+.inputbg {
+    background-image: url("../public/inputbg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align:center;
+}
+
+.framebg {
+    background-image: url("../public/framebg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align:center;
+}
+.textareabg {
+    background-image: url("../public/textareabg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align:center;
+}
+.tablebg {
+    background-image: url("../public/topbg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align:center;
+}

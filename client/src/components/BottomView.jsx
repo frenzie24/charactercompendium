@@ -3,24 +3,17 @@ import React from "react";
 import ListView from './ListView'
 import TextAreaView from './TextAreaView'
 
-const BottomView = () => {
+const BottomView = ({HandleChange}) => {
 
-    const handleChange = (ev, setCallBackState) => {
-        // ev.preventDefault();
-        const target = ev.target;
-        debugger;
-        setCallBackState(target.value);
-
-    }
 
     return (
-        <section className="w-full flex flex-row flex-wrap">
-            <ListView listName={"Stat"} HandleChange={handleChange} />
-            <div className="w-[500px] flex flex-row flex-wrap justify-center">
-                <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={handleChange} />
-                <TextAreaView placeholder={{ label: 'Your character content here' }} HandleChange={handleChange} />
+        <section className=" flex flex-row flex-wrap justify-center my-12 text-black">
+            <ListView listName={"Stat"} HandleChange={HandleChange} />
+            <div className="w-96 mx-6 flex flex-row flex-wrap justify-center">
+                <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={HandleChange} />
+                <TextAreaView placeholder={{ label: 'Your character content here' }} HandleChange={HandleChange} />
             </div>
-            <ListView listName={"Skill"} HandleChange={handleChange} />
+            <ListView listName={"Skill"} HandleChange={HandleChange} />
         </section>
     );
 }

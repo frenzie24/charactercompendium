@@ -16,11 +16,19 @@ function App() {
 
   }
 
+  const handleChange = (ev, setCallBackState) => {
+    // ev.preventDefault();
+    const target = ev.target;
+    debugger;
+    setCallBackState(target.value);
+
+}
+
   return (
     <>
-      <div className='flex flex-row flex-wrap w-screen justify-between items-start px-5 py-5 bg-purple-900'>
-        <TopView />
-        <BottomView />
+      <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
+        <TopView HandleChange={handleChange}/>
+        <BottomView HandleChange={handleChange}/>
 
       </div>
 
