@@ -8,6 +8,8 @@ import ImageView from './components/views/ImageView';
 import PrimaryAttribute from './components/PrimaryAttribute';
 import LabelView from './components/views/LabelView';
 import LabelContainer from './components/LabelContainer';
+import CharacterSheetView from './components/views/CharacterSheetView';
+
 
 // i never remove count state from app, because I almost always eventually end up needing it at this level
 function App() {
@@ -29,8 +31,7 @@ function App() {
   return (
     <>
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
-        <TopView HandleChange={handleChange}/>
-        <BottomView HandleChange={handleChange}/>
+        <CharacterSheetView HandleChange={handleChange} />
 
       </div>
 
