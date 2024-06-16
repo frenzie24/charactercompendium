@@ -13,7 +13,7 @@ const TopView = ({HandleChange, useGetEditMode, useHandleEditToggle}) => {
     return (<div className='w-full flex flex-row flex-wrap justify-center items-center mt-12 pb-8 p-2'>
 
         <LabelContainer HandleChange={HandleChange} useGetEditMode={useGetEditMode} />
-        <ImageView Src="./test.png" Caption="Rozberyl"/>
+        <ImageView Src="./test.png" Caption=""/>
         <div className='px-8 w-fit h-48 flex flex-row flex-wrap justify-center items-center [&_*]:p-1'>
             <PrimaryAttribute Name="HP" Src="./heart.png" />
             <PrimaryAttribute Name="Defense" Src="./shield.png" />
