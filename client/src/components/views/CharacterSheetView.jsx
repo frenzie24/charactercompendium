@@ -21,7 +21,7 @@ function CharacterSheetView({ HandleChange }) {
     return (
         <>
             <TopView HandleChange={HandleChange} useGetEditMode={useGetEditMode} useHandleEditToggle={useHandleEditToggle }/>
-            <BottomView HandleChange={HandleChange} />
+            <BottomView HandleChange={HandleChange} useGetEditMode={useGetEditMode}/>
         </>
     );
 }

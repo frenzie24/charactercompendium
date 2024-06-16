@@ -7,7 +7,7 @@ import '../../App.css'
 // the same HandleChange we sent from the parent will be used to handle change on this component.
 // It will also be passed to this component's children
 // ## TODO: need to toggle input disabled state when editing
-const ListView = ({ listName, HandleChange }) => {
+const ListView = ({ listName, HandleChange, useGetEditMode }) => {
 
     // declare state variables and use validateState script to assign their state
     const [name, setName] = useState(validateState(listName, "New"))
@@ -25,9 +25,9 @@ const ListView = ({ listName, HandleChange }) => {
             <div className=" w-60 py-4 [&_*]:w-64 flex flex-row flex-wrap justify-center items-start">
                 <input className="inputbg h-10 w-full" type="text" onChange={handleChange} placeholder={`${name} Card`} />
                 <ul className="flex h-full flex-col flex-wrap items-start">
-                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`} />
-                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`} />
-                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`}  />
+                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`} useGetEditMode={useGetEditMode}/>
+                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`} useGetEditMode={useGetEditMode}/>
+                    <ListInputView HandleChange={HandleChange}  placeholder={`${name} Name`} useGetEditMode={useGetEditMode}/>
 
                 </ul>
             </div>

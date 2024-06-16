@@ -4,19 +4,21 @@ import '../../App.css'
 
 // returns a li with input.  key attribute is created through uuid
 
-const ListInputView = ({ placeholder, HandleChange }) => {
+const ListInputView = ({ placeholder, HandleChange, useGetEditMode }) => {
     // we need the key state for when we add a list item to the list
     // same with id!
     // key *only* needs to be unique per list so uuid is likely overkill
 
     const [key, setKey] = useState(uuidv4());
     const [input, setInput] = useState('');
-    const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3')
+    const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3');
+    const [editMode, setEditMode] = useState(useGetEditMode);
 
 
     //when state updates, log thew new state
     useEffect(()=> {
         console.log(...['state updated\n', `input: ${input}`])
+        setEditMode(useGetEditMode())
     }, [input])
 
     // our change hanlder alllll the way from SheetBottom
@@ -25,7 +27,8 @@ const ListInputView = ({ placeholder, HandleChange }) => {
 
     return (
         <li key={key} className=" ">
-            <input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} />
+           {!editMode ? (<input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} disabled/>)
+            : (<input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} />)}
         </li>
     );
 
