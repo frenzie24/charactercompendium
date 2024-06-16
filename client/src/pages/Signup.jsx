@@ -14,7 +14,7 @@ const Signup = () => {
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
-  const handleChange = (event) => {
+  const HandleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({
@@ -57,7 +57,7 @@ const Signup = () => {
                   name="username"
                   type="text"
                   value={formState.name}
-                  onChange={handleChange}
+                  onChange={HandleChange}
                 />
                 <input
                   className="form-input"
@@ -65,7 +65,7 @@ const Signup = () => {
                   name="email"
                   type="email"
                   value={formState.email}
-                  onChange={handleChange}
+                  onChange={HandleChange}
                 />
                 <input
                   className="form-input"
@@ -73,7 +73,7 @@ const Signup = () => {
                   name="password"
                   type="password"
                   value={formState.password}
-                  onChange={handleChange}
+                  onChange={HandleChange}
                 />
                 <button
                   className="btn btn-block btn-primary"
