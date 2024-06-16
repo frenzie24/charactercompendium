@@ -5,7 +5,7 @@
 */
 
 import React, { useState } from "react";
-import '../App.css'
+import '../../App.css'
 /*
 image view returns a figure with a caption and input.
 input begins life hidden and will be shown during editing only.

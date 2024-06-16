@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 
-import BottomView from './components/BottomView'
+import BottomView from './components/views/BottomView'
 // need to add routing !
-import TopView from './components/TopView'
-import ImageView from './components/ImageView';
+import TopView from './components/views/TopView'
+import ImageView from './components/views/ImageView';
 import PrimaryAttribute from './components/PrimaryAttribute';
-import LabelView from './components/LabelView';
+import LabelView from './components/views/LabelView';
 import LabelContainer from './components/LabelContainer';
 
 // i never remove count state from app, because I almost always eventually end up needing it at this level

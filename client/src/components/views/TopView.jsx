@@ -1,7 +1,7 @@
 import React from "react";
 import ImageView from "./ImageView";
-import LabelContainer from "./LabelContainer";
-import PrimaryAttribute from "./PrimaryAttribute";
+import LabelContainer from "../LabelContainer";
+import PrimaryAttribute from "../PrimaryAttribute";
 
 
 // TopView needs to manage Caption state and add the HandleChange hook, this component is for styling the top portion of the character sheet's components

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import StepBtn from "./StepBtn";
+import StepBtn from "../StepBtn";
 import ListInputView from "./ListInputView";
-import validateState from "../utils/validateState";
-import '../App.css'
+import validateState from "../../utils/validateState";
+import '../../App.css'
 
 // the same HandleChange we sent from the parent will be used to handle change on this component.
 // It will also be passed to this component's children

@@ -1,5 +1,5 @@
 import React from "react";
-import LabelView from './LabelView';
+import LabelView from './views/LabelView';
 import validateState from "../utils/validateState";
 
 // component to group, place and pass props to label views for character class and level

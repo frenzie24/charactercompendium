@@ -1,7 +1,7 @@
 import React from "react";
 
 import ListView from './ListView'
-import TextAreaView from './TextAreaView'
+import TextAreaView from '../TextAreaView'
 
 // component to style and pass props to children
 const BottomView = ({HandleChange}) => {
