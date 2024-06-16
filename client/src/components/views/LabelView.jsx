@@ -29,8 +29,7 @@ const LabelView = ({ Text, Src, HandleChange, useGetEditMode }) => {
 
         <div className=" flex justify-center items-center px-8">
             <div className="bgimage w-52 h-20 flex justify-center items-center">
-                {!editMode ? (<input className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} disabled></input>) :
-                    (<input className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange}></input>)}
+               <input className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} disabled={!editMode}></input>
             </div>
         </div>
     );

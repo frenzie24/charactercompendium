@@ -27,8 +27,7 @@ const ListInputView = ({ placeholder, HandleChange, useGetEditMode }) => {
 
     return (
         <li key={key} className=" ">
-           {!editMode ? (<input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} disabled/>)
-            : (<input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} />)}
+           <input className="inputbg text-black" type="text" onChange={handleChange} placeholder={_placeholder} disabled={!editMode}/>
         </li>
     );
 

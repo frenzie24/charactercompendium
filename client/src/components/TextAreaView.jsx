@@ -11,7 +11,6 @@ const TextAreaView = ({ placeholder, HandleChange }) => {
     const [content, setContent] = useState('');
     const [uuid, setUuid] = useState(uuidv4());
 
-
     // use the valididatestate script to check passed props for undefinded and fill them with generics if not
     let labelPlaceHolder = "";
     let contentPlaceHolder = ""
