@@ -21,7 +21,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
-import { QUERY_USER_CHARACTERS } from './utils/queries';
 
 import { v4 as uuidv4 } from 'uuid';
 import Header from './components/Header';
