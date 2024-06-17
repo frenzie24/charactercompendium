@@ -6,19 +6,14 @@ import { ADD_CHARACTER, LOGIN_USER } from '../../utils/mutations';
 import AuthService from "../../utils/auth";
 
 // component to style and render top and bottom views of character sheets ;)
-function CharacterSheetView({ HandleChange }) {
+function CharacterSheetView({ HandleChange, Items }) {
 
     const [editMode, setEditMode] = useState(false);
     const [addCharacter] = useMutation(ADD_CHARACTER);
     const [login] = useMutation(LOGIN_USER);
 
-    const useGetEditMode = () => {
-
-        return editMode;
-    }
-
     const useHandleEditToggle = () => {
-        debugger
+
         const edit = !editMode;
         setEditMode(edit);
     }
@@ -70,12 +65,11 @@ function CharacterSheetView({ HandleChange }) {
     }
 
     return (
-        <>
-            <TopView HandleChange={HandleChange} useGetEditMode={useGetEditMode} useHandleEditToggle={useHandleEditToggle} />
-            {/* <button onClick={handleLogin}>Log in</button>
-            <button onClick={handleAddCharacter}>Add Dummy Character</button> */}
-            <BottomView HandleChange={HandleChange} useGetEditMode={useGetEditMode} />
-        </>
+
+        <div className="[&_*]:placeholder:text-zinc-900">
+            <TopView HandleChange={HandleChange} Items={Items} />
+            <BottomView HandleChange={HandleChange} Items={Items}/>
+        </div>
     );
 }
 
