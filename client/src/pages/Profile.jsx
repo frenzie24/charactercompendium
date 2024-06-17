@@ -1,10 +1,11 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 import CharacterForm from "../components/CharacterForm";
 import CharacterList from "../components/CharacterList";
 
-import { QUERY_USER, QUERY_ME, QUERY_CHARACTERS } from "../utils/queries";
+import { QUERY_USER, QUERY_ME, QUERY_USER_CHARACTERS } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
@@ -14,13 +15,20 @@ const Profile = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  const { loading: loadingCharacters, data: characterData } =
-    useQuery(QUERY_CHARACTERS);
 
   const user = data?.me || data?.user || {};
-  const characters = characterData?.characters || [];
 
-  // navigate to personal profile page if username is yours
+  // Fetch characters owned by the logged-in user
+  const { loading: loadingCharacters, data: characterData } = useQuery(
+    QUERY_USER_CHARACTERS,
+    {
+      variables: { username: userParam || Auth.getProfile().data.username },
+    }
+  );
+
+  const characters = characterData?.userCharacters || [];
+
+  // Navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to='/me' />;
   }
@@ -60,7 +68,6 @@ const Profile = () => {
           className='col-12 col-md-10 mb-3 p-3'
           style={{ border: "1px dotted #1a1a1a" }}
         >
-          <CharacterForm />
         </div>
       </div>
     </div>
