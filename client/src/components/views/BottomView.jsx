@@ -5,8 +5,6 @@ import TextAreaView from '../TextAreaView'
 
 // component to style and pass props to children
 const BottomView = ({HandleChange, Items, }) => {
-
-    debugger;
     return (
         <section className=" flex flex-row flex-wrap justify-center mt-4 mb-12 text-black">
             <ListView listName={"Stat"} HandleChange={HandleChange} Items={Items}/>

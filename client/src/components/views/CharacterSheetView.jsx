@@ -6,9 +6,9 @@ import TopView from "./TopView";
 function CharacterSheetView({ HandleChange, Items }) {
 
     const [editMode, setEditMode] = useState(false);
-    debugger;
+
     const useHandleEditToggle = () => {
-        debugger
+
         const edit = !editMode;
         setEditMode(edit);
     }

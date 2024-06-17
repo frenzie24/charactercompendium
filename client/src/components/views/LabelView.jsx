@@ -4,7 +4,7 @@ import InputView from "./InputView";
 
 // LabelView stores text and src state, the text can be edited by users
 // we need to add disbaled toggle for that input
-const LabelView = ({ Text, Src, HandleChange, }) => {
+const LabelView = ({ Text, Src, HandleChange, Items, id}) => {
     const [text, setText] = useState(validateState(Text, 'Label'));
     const [src, setSrc] = useState(validateState(Src, './notfound.jpg'));
     const [editMode, setEditMode] = useState(false);
@@ -33,10 +33,10 @@ const LabelView = ({ Text, Src, HandleChange, }) => {
     return (
 
         <div className=" flex justify-center items-center px-8" onClick={handleClick} >
-            <div className="bgimage w-52 h-20 flex justify-center items-center"  onClick={handleClick} >
-                {editMode ? <InputView placeholder={text} HandleChange={HandleChange} />
-               /*<input type='text' className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} onBlur={handleBlur} autoFocus ></input> */: <h4  className="text-center round-lg w-36 pb-2 mb-2">{text}</h4>}
-            </div>
+            <span id={id} name={'Label'} className="bgimage w-52 h-20 flex justify-center items-center"  onClick={handleClick} >
+
+               <input id={id} type='text' className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} autoFocus ></input>
+            </span>
         </div>
     );
 };

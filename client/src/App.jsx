@@ -32,27 +32,88 @@ function App() {
   const symbol = '+';
   let statList = []
   let skillList = []
+  let textAreas = []
+  let primaryAttributes = [];
+  let characterLabels = [];
+
   const handleClick = (ev) => {
 
   }
 
-  const handleListChange = (target, parent) => {
-    let name = parent.getAttribute('name');
+  // logic to update/populate empty stat/skill lists
+  const buildListData = (list, target, parent) => {
     let id = parent.id;
+    const obj = {
+      value: target.value,
+      id: id,
+      inputId: target.id
+    }
 
-    if (name == 'Stat') {
-
-      const obj = {
-        value: target.value,
-        id: id
-      }
-      const list = [...statList, target.value];
-      statList = list;
+    if (list.length <= 0) {
+      list = [obj];
     } else {
-      const list = [...skillList, target.value];
-      skillList = list;
+      let found = false;
+      list.map((stat, idx) => {
+        if (stat.inputId === target.id) {
+          found = true;
+          return list[idx] = obj;
+
+        }
+      });
+
+      if (!found) list.push(obj);
     }
   }
+// when a text input component in a list item changes
+  const handleListChange = (target, parent) => {
+    let name = parent.getAttribute('name');
+
+    if (name == 'Stat') {
+      buildListData(statList, target, parent)
+
+    } else {
+      buildListData(skillList, target, parent)
+    }
+  }
+
+  const handleLabelChange = (target, parent) => {
+    const id = parent.id;
+    const inputId = target.id;
+    const obj = {
+      value: target.value,
+      id: id,
+      inputId: inputId
+    }
+
+    // there are only ever 2 possible character labels, and they always are rendered together
+    if (characterLabels.length == 0) {
+      characterLabels = [obj]
+    } else {
+      if (characterLabels[0].inputId == inputId) {
+        characterLabels[0] = obj;
+      } else characterLabels[1] = obj
+    }
+  }
+
+  const handlePrimaryChange = (target, parent) => {
+    const id = parent.id;
+    const inputId = target.id;
+    const obj = {
+      value: target.value,
+      id: id,
+      inputId: inputId
+    }
+
+    // there are only ever 2 possible character labels, and they always are rendered together
+    if (primaryAttributes.length == 0) {
+      primaryAttributes = [obj]
+    } else {
+      if (primaryAttributes[0].inputId == inputId) {
+        primaryAttributes[0] = obj;
+      } else primaryAttributes[1] = obj
+    }
+  }
+
   // THE parent handleChange hook, use this as an example when creating edit, save, and post hooks
   const handleChange = (ev, setCallBackState) => {
 
@@ -61,9 +122,20 @@ function App() {
 
     const target = ev.target;
     const parent = target.parentElement;
+    const tag = parent.tagName;
+    //set the state of the component that called the hook
     setCallBackState(target.value);
-    if (parent.tagName == "LI") {
+
+    if (tag == "LI") {
       handleListChange(target, parent)
+    } else if (tag == "SPAN") {
+
+      handleLabelChange(target, parent)
+
+    } else if(tag == "DIV") {
+      if(target.name== "Primary") {
+        handlePrimaryChange(target, parent);
+      }
     }
 
     debugger;
@@ -75,7 +147,7 @@ function App() {
   return (
     <>
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
-        <CharacterSheetView HandleChange={handleChange} Items={undefined}/>
+        <CharacterSheetView HandleChange={handleChange} Items={undefined} />
 
       </div>
 
