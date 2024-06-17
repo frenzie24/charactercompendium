@@ -203,8 +203,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
-
-        <div className="container">
+      <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
           <Outlet />
         </div>
 
@@ -213,7 +212,7 @@ function App() {
   );
   /*return (
     <>
-      <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
+
         <CharacterSheetView HandleChange={handleChange} Items={undefined} />
 
       </div>
