@@ -7,7 +7,7 @@ function CharacterSheetView({ HandleChange }) {
 
     const [editMode, setEditMode] = useState(false);
 
-    const useGetEditMode = () => {
+    const useGetVal = () => {
 
         return editMode;
     }
@@ -19,10 +19,10 @@ function CharacterSheetView({ HandleChange }) {
     }
 
     return (
-        <>
-            <TopView HandleChange={HandleChange} useGetEditMode={useGetEditMode} useHandleEditToggle={useHandleEditToggle }/>
-            <BottomView HandleChange={HandleChange} useGetEditMode={useGetEditMode}/>
-        </>
+        <div className="[&_*]:placeholder:text-zinc-900">
+            <TopView HandleChange={HandleChange} useGetVal={useGetVal} useHandleEditToggle={useHandleEditToggle }/>
+            <BottomView HandleChange={HandleChange} useGetVal={useGetVal}/>
+        </div>
     );
 }
 
