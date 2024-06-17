@@ -25,9 +25,17 @@ const resolvers = {
             throw AuthenticationError;
         },
         userCharacters: async (parent, { userId }) => {
-            // Find characters by userId
-            return Character.find({ userId });
-        },
+            // Find the user by userId and populate characters
+            const user = await User.findById(userId).populate('characters');
+            
+            // If the user is found, return their characters
+            if (user) {
+              return user.characters;
+            }
+            
+            // If no user is found, return an empty array or handle it as needed
+            return [];
+          },
 
     },
 

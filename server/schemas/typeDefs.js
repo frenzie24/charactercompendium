@@ -32,9 +32,9 @@ const typeDefs = `
   users: [User]
   user(username: String): User
   me: User
-  userCharacters(username: String!): [Character]
+  userCharacters(userId: ID!): [Character]
   characters: [Character]
-  character(userId: ID!): Character
+  character(characterId: ID!): Character
   parties: [Party]
   }
  
