@@ -6,22 +6,27 @@ import { ADD_CHARACTER, LOGIN_USER } from '../../utils/mutations';
 import AuthService from "../../utils/auth";
 
 // component to style and render top and bottom views of character sheets ;)
-function CharacterSheetView({ HandleChange, Items }) {
-
+function CharacterSheetView({ HandleChange,  getData, Items }) {
+    debugger;
     const [editMode, setEditMode] = useState(false);
+    const [login, { error, data }] = useMutation(LOGIN_USER);
 
+    const [addCharacter, { cerror, cdata }] = useMutation(ADD_CHARACTER);
     const useHandleEditToggle = () => {
 
         const edit = !editMode;
         setEditMode(edit);
     }
 
-    const handleAddCharacter = async () => {
+    const GetData = (ev) => { getData(ev); }
+
+    const handleAddCharacter = async (ev) => {
+        ev.preventDefault()
         if (!AuthService.loggedIn()) {
             console.error('User is not logged in');
             return;
         }
-
+       // getData(ev);/*
         try {
             const { data } = await addCharacter({
                 variables: {
@@ -61,10 +66,11 @@ function CharacterSheetView({ HandleChange, Items }) {
             console.error('Network error details:', err.networkError);
         }
     }
-
     return (
         <div className="[&_*]:placeholder:text-zinc-900">
-            <TopView HandleChange={HandleChange} Items={Items} />
+            <TopView HandleChange={HandleChange} Items={Items} GetItems={getData}/>
+            <button onClick={GetData} >ADD TOON</button>
+            <button onClick={handleLogin} >LOGIN</button>
             <BottomView HandleChange={HandleChange} Items={Items}/>
         </div>
     );

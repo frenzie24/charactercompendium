@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { ADD_CHARACTER, LOGIN_USER, ADD_USER } from './utils/mutations';
-import Auth from "./utils/auth";
+
 import { useMutation } from '@apollo/client';
 
+import AuthService from "./utils/auth";
 import BottomView from './components/views/BottomView'
 // need to add routing !
 import TopView from './components/views/TopView'
@@ -12,6 +13,7 @@ import PrimaryAttribute from './components/PrimaryAttribute';
 import LabelView from './components/views/LabelView';
 import LabelContainer from './components/LabelContainer';
 import CharacterSheetView from './components/views/CharacterSheetView';
+
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -33,11 +35,21 @@ const genDummyInputList = (listName) => {
 function App() {
   const [count, setCount] = useState(0)
   const symbol = '+';
-  let statList = []
-  let skillList = []
-  let textAreas = []
-  let primaryAttributes = [];
-  let characterLabels = [];
+  const [baseStat, setBaseStat] = useState([])
+  const [skill, setSkill] = useState([]);
+
+  const [inventory, setInventory] = useState([])
+  const [notes, setNotes] = useState()
+  const [health, setHealth] = useState();
+  const [defense, setDefense] = useState();
+  const [characterName, setCharacterName] = useState();
+  const [characterClass, setCharacterClass] = useState();
+
+  const [imageView, setImageView] = useState({});
+
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const [addCharacter, { cerror, cdata }] = useMutation(ADD_CHARACTER);
 
   const handleClick = (ev) => {
 
@@ -65,17 +77,17 @@ function App() {
       });
 
       if (!found) list.push(obj);
-    }
+    } return list;
   }
-// when a text input component in a list item changes
+  // when a text input component in a list item changes
   const handleListChange = (target, parent) => {
     let name = parent.getAttribute('name');
 
     if (name == 'Stat') {
-      buildListData(statList, target, parent)
+      setBaseStat(buildListData(baseStat, target, parent))
 
     } else {
-      buildListData(skillList, target, parent)
+      setSkill(buildListData(skill, target, parent))
     }
   }
 
@@ -89,13 +101,9 @@ function App() {
     }
 
     // there are only ever 2 possible character labels, and they always are rendered together
-    if (characterLabels.length == 0) {
-      characterLabels = [obj]
-    } else {
-      if (characterLabels[0].inputId == inputId) {
-        characterLabels[0] = obj;
-      } else characterLabels[1] = obj
-    }
+    if (inputId == 1) {
+      setCharacterName(obj)
+    } else setCharacterClass(obj)
   }
 
   const handlePrimaryChange = (target, parent) => {
@@ -104,79 +112,117 @@ function App() {
     const obj = {
       value: target.value,
       id: id,
-      inputId: inputId
+      inputId: inputId,
+      label: target.id
     }
 
     // there are only ever 2 possible character labels, and they always are rendered together
-    if (primaryAttributes.length == 0) {
-      primaryAttributes = [obj]
-    } else {
-      if (primaryAttributes[0].inputId == inputId) {
-        primaryAttributes[0] = obj;
-      } else primaryAttributes[1] = obj
-    }
+
+    if (target.id == "Health") {
+      setHealth(obj)
+    } else setDefense(obj)
   }
 
-  const handleTextAreaChange = (target, parent) => {
-    const id = parent.id;
-    const inputId = target.id;
-    const obj = {
-      input: inputId == 'input' ? target.value : parent.children[0].value,
-      content:  inputId == 'content' ? target.value : parent.children[1].value,
-      id: id,
-      inputId: inputId,
-    }
-    // there are only 2 textarea containers for now
-    if (textAreas.length == 0) {
-      textAreas = [obj]
-    } else {
-      if (textAreas[0].id == id) {
-        textAreas[0] = obj;
-      } else textAreas[1] = obj
-    }
+
+const handleTextAreaChange = (target, parent) => {
+  const id = parent.id;
+  const inputId = target.id;
+  const obj = {
+    input: inputId == 'input' ? target.value : parent.children[0].value,
+    content: inputId == 'content' ? target.value : parent.children[1].value,
+    id: id,
+    inputId: inputId,
+  }
+  // there are only 2 textarea containers for now
+  if (inputId == 'input') {
+    setNotes(obj)
+  } else setInventory(obj)
+}
+
+
+const handleImageInputChange = (target, parent) => {
+  const obj = {
+    input: target.value,
+    img: parent.children[0].src
+
   }
 
-  // THE parent handleChange hook, use this as an example when creating edit, save, and post hooks
-  const handleChange = (ev, setCallBackState) => {
+  setImageView(obj)
+}
+// THE parent handleChange hook, use this as an example when creating edit, save, and post hooks
+const handleChange = (ev, setCallBackState) => {
 
-    ev.preventDefault();
+  ev.preventDefault();
 
 
-    const target = ev.target;
-    const parent = target.parentElement;
-    const tag = parent.tagName;
-    //set the state of the component that called the hook
-    setCallBackState(target.value);
+  const target = ev.target;
+  const parent = target.parentElement;
+  const tag = parent.tagName;
+  //set the state of the component that called the hook
+  setCallBackState(target.value);
 
-    if (tag == "LI") {
-      handleListChange(target, parent)
-    } else if (tag == "SPAN") {
+  if (tag == "LI") {
+    handleListChange(target, parent);
+  } else if (tag == "SPAN") {
 
-      handleLabelChange(target, parent)
+    handleLabelChange(target, parent);
 
-    } else if(tag == "DIV") {
-      if(target.name== "Primary") {
-        handlePrimaryChange(target, parent);
-      }
-    } else if (tag == "SECTION" ){
-      handleTextAreaChange(target, parent)
+  } else if (tag == "DIV") {
+    if (target.name == "Primary") {
+      handlePrimaryChange(target, parent);
     }
+  } else if (tag == "SECTION") {
+    handleTextAreaChange(target, parent);
+  } else if (tag == "FIGURE") {
+    handleImageInputChange(target, parent);
+  }
 
+  debugger;
+
+
+}
+
+const getData = async (ev) => {
+  let temp = [skill, baseStat, inventory, notes, health, defense, characterName, characterClass];
+  ev.preventDefault()
+  if (!AuthService.loggedIn()) {
+    console.error('User is not logged in');
+    return;
+  }
+  //let vals = GetData(ev);
+  try {
     debugger;
-
-
+    const { data } = await addCharacter({
+      variables: {
+        userID: AuthService.getProfile().data._id, // Ensure you get the userID from the token
+        characterName:JSON.stringify(characterName),
+        characterClass:JSON.stringify( characterClass),
+        health:JSON.stringify( health),
+        defense:JSON.stringify( defense),
+        baseStat:JSON.stringify( baseStat),
+        skill:JSON.stringify( skill),
+        inventory:JSON.stringify( inventory),
+        notes:JSON.stringify( notes)
+      },
+    });
+    console.log('Character added', data);
+  } catch (err) {
+    console.error('Error adding character', err);
+    console.error('GraphQL error details:', err.graphQLErrors);
+    console.error('Network error details:', err.networkError);
   }
+}
 
-  // we need to take this and make a view for the character sheet
-  return (
-    <>
-      <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
-        <CharacterSheetView HandleChange={handleChange} Items={undefined} />
+// we need to take this and make a view for the character sheet
+return (
+  <>
+    <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
+      <CharacterSheetView HandleChange={handleChange} getData={getData} Items={undefined} />
 
-      </div>
+    </div>
 
-    </>
-  )
+  </>
+)
 }
 
 export default App
