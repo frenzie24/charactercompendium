@@ -9,8 +9,8 @@ const BottomView = ({HandleChange, Items, }) => {
         <section className=" flex flex-row flex-wrap justify-center mt-4 mb-12 text-black">
             <ListView listName={"Stat"} HandleChange={HandleChange} Items={Items}/>
             <div className="w-96 mx-6 flex flex-row flex-wrap justify-center">
-                <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={HandleChange} />
-                <TextAreaView placeholder={{ label: 'Your character content here' }} HandleChange={HandleChange} />
+                <TextAreaView placeholder={{ label: 'Feats and Description' }} HandleChange={HandleChange} Items={Items} id={1}/>
+                <TextAreaView placeholder={{ label: 'Your character content here' }} HandleChange={HandleChange} Items={Items} id={2}/>
             </div>
             <ListView listName={"Skill"} HandleChange={HandleChange} Items={Items}/>
         </section>

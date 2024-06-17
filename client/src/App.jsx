@@ -114,6 +114,25 @@ function App() {
     }
   }
 
+  const handleTextAreaChange = (target, parent) => {
+    const id = parent.id;
+    const inputId = target.id;
+    const obj = {
+      input: inputId == 'input' ? target.value : parent.children[0].value,
+      content:  inputId == 'content' ? target.value : parent.children[1].value,
+      id: id,
+      inputId: inputId,
+    }
+    // there are only 2 textarea containers for now
+    if (textAreas.length == 0) {
+      textAreas = [obj]
+    } else {
+      if (textAreas[0].id == id) {
+        textAreas[0] = obj;
+      } else textAreas[1] = obj
+    }
+  }
+
   // THE parent handleChange hook, use this as an example when creating edit, save, and post hooks
   const handleChange = (ev, setCallBackState) => {
 
@@ -136,6 +155,8 @@ function App() {
       if(target.name== "Primary") {
         handlePrimaryChange(target, parent);
       }
+    } else if (tag == "SECTION" ){
+      handleTextAreaChange(target, parent)
     }
 
     debugger;
