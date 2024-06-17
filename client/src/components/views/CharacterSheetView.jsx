@@ -3,15 +3,10 @@ import BottomView from "./BottomView";
 import TopView from "./TopView";
 
 // component to style and render top and bottom views of character sheets ;)
-function CharacterSheetView({ HandleChange }) {
+function CharacterSheetView({ HandleChange, Items }) {
 
     const [editMode, setEditMode] = useState(false);
-
-    const useGetVal = (val) => {
-
-       debugger;
-    }
-
+    debugger;
     const useHandleEditToggle = () => {
         debugger
         const edit = !editMode;
@@ -20,8 +15,8 @@ function CharacterSheetView({ HandleChange }) {
 
     return (
         <div className="[&_*]:placeholder:text-zinc-900">
-            <TopView HandleChange={HandleChange} useGetVal={useGetVal} useHandleEditToggle={useHandleEditToggle }/>
-            <BottomView HandleChange={HandleChange} useGetVal={useGetVal}/>
+            <TopView HandleChange={HandleChange} Items={Items} />
+            <BottomView HandleChange={HandleChange} Items={Items}/>
         </div>
     );
 }
