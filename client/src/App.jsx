@@ -23,8 +23,9 @@ import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
 import { v4 as uuidv4 } from 'uuid';
+import Header from './components/Header';
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
@@ -193,64 +194,63 @@ function App() {
       handleTextAreaChange(target, parent)
     }
 
-    debugger;
+    // debugger;
 
 
   }
 
-  const handleAddCharacter = async () => {
-    if (!AuthService.loggedIn()) {
-        console.error('User is not logged in');
-        return;
-    }
+//   const handleAddCharacter = async () => {
+//     if (!AuthService.loggedIn()) {
+//         console.error('User is not logged in');
+//         return;
+//     }
 
-    try {
-        const { data } = await addCharacter({
-            variables: {
-                userID: AuthService.getProfile().data._id, // Ensure you get the userID from the token
-                characterName: "Tester",
-                characterClass: "Generic",
-                health: "1/2",
-                defense: "+1",
-                baseStat: ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
-                skill: ["Arcana:5", "Stealth:3"],
-                inventory: ["One Spellbook"],
-                notes: ["Nothing of note"]
-            },
-        });
-        console.log('Character added', data);
-    } catch (err) {
-        console.error('Error adding character', err);
-        console.error('GraphQL error details:', err.graphQLErrors);
-        console.error('Network error details:', err.networkError);
-    }
-};
+//     try {
+//         const { data } = await addCharacter({
+//             variables: {
+//                 userID: AuthService.getProfile().data._id, // Ensure you get the userID from the token
+//                 characterName: "Tester",
+//                 characterClass: "Generic",
+//                 health: "1/2",
+//                 defense: "+1",
+//                 baseStat: ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
+//                 skill: ["Arcana:5", "Stealth:3"],
+//                 inventory: ["One Spellbook"],
+//                 notes: ["Nothing of note"]
+//             },
+//         });
+//         console.log('Character added', data);
+//     } catch (err) {
+//         console.error('Error adding character', err);
+//         console.error('GraphQL error details:', err.graphQLErrors);
+//         console.error('Network error details:', err.networkError);
+//     }
+// };
 
-const handleLogin = async () => {
-    try {
-        const { data } = await login({
-            variables: {
-                email: "test1@test.com",
-                password: "test1"
-            },
-        });
-        // this segment here has to do with storing the token and is REQUIRED
-        AuthService.login(data.login.token);
-        console.log('Login successful', data);
-        // Optionally, redirect or perform additional actions upon successful login
-    } catch (err) {
-        console.error('Error logging in', err);
-        console.error('GraphQL error details:', err.graphQLErrors);
-        console.error('Network error details:', err.networkError);
-    }
-}
+// const handleLogin = async () => {
+//     try {
+//         const { data } = await login({
+//             variables: {
+//                 email: "test1@test.com",
+//                 password: "test1"
+//             },
+//         });
+//         // this segment here has to do with storing the token and is REQUIRED
+//         AuthService.login(data.login.token);
+//         console.log('Login successful', data);
+//         // Optionally, redirect or perform additional actions upon successful login
+//     } catch (err) {
+//         console.error('Error logging in', err);
+//         console.error('GraphQL error details:', err.graphQLErrors);
+//         console.error('Network error details:', err.networkError);
+//     }
+// }
 
   // we need to take this and make a view for the character sheet3
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
-      <button onClick={handleLogin}>Log in</button>
-      <button onClick={handleAddCharacter}>Add Dummy Character</button>
+        <Header />
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
           <Outlet />
         </div>

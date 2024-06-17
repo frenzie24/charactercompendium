@@ -10,7 +10,7 @@ const Login = (props) => {
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
-  const HandleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({
@@ -41,8 +41,8 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center items-center max-w-96 min-h-72 mb-4">
-      <div className="col-12 col-lg-10 ">
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
@@ -59,7 +59,7 @@ const Login = (props) => {
                   name="email"
                   type="email"
                   value={formState.email}
-                  onChange={HandleChange}
+                  onChange={handleChange}
                 />
                 <input
                   className="form-input"
@@ -67,7 +67,7 @@ const Login = (props) => {
                   name="password"
                   type="password"
                   value={formState.password}
-                  onChange={HandleChange}
+                  onChange={handleChange}
                 />
                 <button
                   className="btn btn-block btn-primary"

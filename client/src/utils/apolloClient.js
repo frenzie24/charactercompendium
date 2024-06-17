@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './auth'; // Ensure you import your AuthService
-debugger;
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
