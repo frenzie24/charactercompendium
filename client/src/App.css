@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bgimage {
-    background-image: url("../public/label.png");
+    background-image: url("/label.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,7 +11,7 @@
 }
 
 .inputbg {
-    background-image: url("../public/inputbg.png");
+    background-image: url("/inputbg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -19,21 +19,21 @@
 }
 
 .framebg {
-    background-image: url("../public/framebg.png");
+    background-image: url("/framebg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     vertical-align:center;
 }
 .textareabg {
-    background-image: url("../public/textareabg.png");
+    background-image: url("/textareabg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     vertical-align:center;
 }
 .tablebg {
-    background-image: url("../public/topbg.png");
+    background-image: url("/topbg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
