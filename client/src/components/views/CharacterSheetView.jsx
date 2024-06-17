@@ -59,6 +59,8 @@ function CharacterSheetView({ HandleChange }) {
                     password: "test1"
                 },
             });
+            // this segment here has to do with storing the token and is REQUIRED
+            AuthService.login(data.login.token);
             console.log('Login successful', data);
             // Optionally, redirect or perform additional actions upon successful login
         } catch (err) {
