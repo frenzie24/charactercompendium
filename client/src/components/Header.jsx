@@ -14,7 +14,7 @@ const Header = () => {
           <Link className='text-light' to='/'>
             <h1 className='m-0'>CharacterCompendium</h1>
           </Link>
-          <p className='m-0'>Let's talk Characters.</p>
+          <p className='m-0'>Let us help you keep track of your characters.</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

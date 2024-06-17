@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import CharacterSheetView from './components/views/CharacterSheetView.jsx';
+import Profile from './pages/Profile.jsx'
 
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
 import './index.css'
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/charactersheet',
         element: <CharacterSheetView />,
+      },
+      {
+        path: "/me",
+        element: <Profile />,
       },
     ],
   },

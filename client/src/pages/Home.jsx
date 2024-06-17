@@ -19,7 +19,7 @@ const Home = () => {
         <div className='col-12 col-md-8 mb-3'>
           {loading ? (
             <div>Loading...</div>
-          ) : (<h4>test</h4>
+          ) : (<h4>Your storage space for heroes, villains, and everything between</h4>
           )}
         </div>
       </div>
