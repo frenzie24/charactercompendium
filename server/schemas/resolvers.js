@@ -20,10 +20,15 @@ const resolvers = {
         },
         me: async (parent, args, context) => {
             if (context.user) {
-              return User.findOne({ _id: context.user._id }).populate("comments");
+                return User.findOne({ _id: context.user._id }).populate("comments");
             }
             throw AuthenticationError;
-          }
+        },
+        userCharacters: async (parent, { userId }) => {
+            // Find characters by userId
+            return Character.find({ userId });
+        },
+
     },
 
     Mutation: {
@@ -122,21 +127,21 @@ const resolvers = {
             if (!user) {
                 throw AuthenticationError;
             }
-        
+
             try {
                 // Find the character by ID
                 const character = await Character.findById(characterId);
-        
+
                 // Check if character exists
                 if (!character) {
                     throw new Error(`Character with ID ${characterId} not found`);
                 }
-        
+
                 // Check if the authenticated user is the owner of the character
                 if (character.userID.toString() !== user._id.toString()) {
                     throw new Error('You are not authorized to remove this character');
                 }
-        
+
                 // Remove the character
                 await character.remove();
                 return character;

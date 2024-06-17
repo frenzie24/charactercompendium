@@ -19,6 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  characters: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Character',
+    },
+  ],
 });
 
 // salt rounds runs the hashing on this password 10 times.

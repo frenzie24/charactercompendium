@@ -47,4 +47,12 @@ query me {
     email
   }
 }
-`;
+`
+
+export const QUERY_USER_CHARACTERS = gql`
+  query userCharacters($userId: ID!) {
+    userCharacters(userId: $userId) {
+      _id
+      name
+    }
+  }`;
