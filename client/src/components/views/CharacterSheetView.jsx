@@ -7,9 +7,9 @@ function CharacterSheetView({ HandleChange }) {
 
     const [editMode, setEditMode] = useState(false);
 
-    const useGetVal = () => {
+    const useGetVal = (val) => {
 
-        return editMode;
+       debugger;
     }
 
     const useHandleEditToggle = () => {

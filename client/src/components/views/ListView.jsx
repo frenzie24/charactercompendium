@@ -18,10 +18,10 @@ const ListView = ({ listName, HandleChange, useGetVal, Items }) => {
     const [list, setList] = useState(validateState(Items, ['1', '3', '1', '3', '1', '3', '1', '3', '1']))
     // callback hook to pass to child list items goes here
 
-
+    let uuid = uuidv4();
     const listItems = list.map(entry => {
         const id = uuidv4();
-        return (<li key={id} className=" "><Inputview HandleChange={HandleChange} placeholder={`${entry} Name`} useGetVal={useGetVal} Key={id} />  </li>);
+        return (<li key={id} id={uuid} name={name} className=" "><Inputview HandleChange={HandleChange} placeholder={`${entry} Name`} useGetVal={useGetVal} Key={id} />  </li>);
     }
     )
     //handle input on name
@@ -33,8 +33,8 @@ const ListView = ({ listName, HandleChange, useGetVal, Items }) => {
 
             {/* <StepBtn onClick={() => { }} symbol={'-'} /> */}
             <div className=" w-72 py-4 [&_*]:w-64 flex flex-row flex-wrap justify-center items-start">
-                <input id={`${name}Card`} className="inputbg h-10 w-full" type="text" onChange={handleChange} placeholder={`${name} Card`} />
-                <ul id={`{name}List`} className="flex h-full flex-col flex-wrap items-start">
+                <input id={`Card${uuid}`} className="inputbg h-10 font-medium w-full" type="text" value={`${name} Card`} onChange={handleChange} placeholder={`${name} Card`} disabled />
+                <ul id={`List${uuid}`} className="flex h-full flex-col flex-wrap items-start">
                     {listItems}
                 </ul>
             </div>
