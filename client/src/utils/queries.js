@@ -50,9 +50,8 @@ query me {
 `
 
 export const QUERY_USER_CHARACTERS = gql`
-  query userCharacters($userId: ID!) {
-    userCharacters(userId: $userId) {
-      _id
-      name
-    }
-  }`;
+  query UserCharacters($userId: ID!) {
+  userCharacters(userId: $userId) {
+    characterName
+  }
+}`;
