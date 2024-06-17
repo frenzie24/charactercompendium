@@ -21,6 +21,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER_CHARACTERS } from './utils/queries';
 
 import { v4 as uuidv4 } from 'uuid';
 import Header from './components/Header';
@@ -74,6 +76,20 @@ function App() {
   const handleClick = (ev) => {
 
   }
+
+  const [characters, setCharacters] = useState([]);
+
+  const { loading, data, error, refetch } = useQuery(QUERY_USER_CHARACTERS, {
+    variables: { userId: "666cb84b41fa64e11ab225e3" },
+    skip: true,
+    onCompleted: (data) => setCharacters(data.userCharacters),
+  });
+
+  const handleFetchCharacters = () => {
+    refetch();
+  };
+
+
 
   // logic to update/populate empty stat/skill lists
   const buildListData = (list, target, parent) => {
@@ -251,6 +267,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
+        <button onClick={handleFetchCharacters}>Fetch User Characters</button>
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
           <Outlet />
         </div>
