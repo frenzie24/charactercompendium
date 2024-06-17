@@ -59,6 +59,7 @@ function CharacterSheetView({ HandleChange }) {
                     password: "test1"
                 },
             });
+            AuthService.login(data.login.token);
             console.log('Login successful', data);
             // Optionally, redirect or perform additional actions upon successful login
         } catch (err) {
@@ -71,8 +72,8 @@ function CharacterSheetView({ HandleChange }) {
     return (
         <>
             <TopView HandleChange={HandleChange} useGetEditMode={useGetEditMode} useHandleEditToggle={useHandleEditToggle} />
-            <button onClick={handleLogin}>Log in</button>
-            <button onClick={handleAddCharacter}>Add Dummy Character</button>
+            {/* <button onClick={handleLogin}>Log in</button>
+            <button onClick={handleAddCharacter}>Add Dummy Character</button> */}
             <BottomView HandleChange={HandleChange} useGetEditMode={useGetEditMode} />
         </>
     );

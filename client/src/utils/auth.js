@@ -28,12 +28,8 @@ class AuthService {
   }
 
   login(idToken) {
-    debugger;
     localStorage.setItem('id_token', idToken);
-    debugger;
-   setTimeout(() => {
-     window.location.assign('/');
-   }, 200);
+    window.location.assign('/');
   }
 
   logout() {
