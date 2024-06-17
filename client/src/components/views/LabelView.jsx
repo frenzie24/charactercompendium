@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import validateState from "../../utils/validateState";
+import InputView from "./InputView";
 
 // LabelView stores text and src state, the text can be edited by users
 // we need to add disbaled toggle for that input
@@ -33,8 +34,8 @@ const LabelView = ({ Text, Src, HandleChange, }) => {
 
         <div className=" flex justify-center items-center px-8" onClick={handleClick} >
             <div className="bgimage w-52 h-20 flex justify-center items-center"  onClick={handleClick} >
-                {editMode ?
-               <input type='text' className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} onBlur={handleBlur} autoFocus ></input> : <h4  className="text-center round-lg w-36 pb-2 mb-2">{text}</h4>}
+                {editMode ? <InputView placeholder={text} HandleChange={HandleChange} />
+               /*<input type='text' className="text-center round-lg w-36 pb-2 mb-2" value={text} onChange={handleChange} onBlur={handleBlur} autoFocus ></input> */: <h4  className="text-center round-lg w-36 pb-2 mb-2">{text}</h4>}
             </div>
         </div>
     );

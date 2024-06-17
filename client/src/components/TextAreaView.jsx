@@ -36,7 +36,7 @@ const TextAreaView = ({ placeholder, HandleChange }) => {
 
     return (
 
-        <li key={uuid} className="framebg flex flex-row flex-wrap justify-center h-80 items-end rounded-md w-96 p-2">
+        <li key={uuid}  className="framebg flex flex-row flex-wrap justify-center h-80 items-end rounded-md w-96 p-2">
             {/*<>*/}
             <input id="input" className="inputbg h-12 w-[350px] text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={input}></input>
             <textarea id="content" className="textareabg w-[360px] h-64 text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleContentChange} value={content}></textarea>

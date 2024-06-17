@@ -30,6 +30,7 @@ const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
             {editMode ? (
                 <div className="w-full h-12 text-center">
                     <input
+                        id={`${name}Attribute`}
                         className="text-center w-28 rounded-lg mb-1"
                         type="text"
                         value={value}
