@@ -1,6 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
+import './index.css'
+import client from './utils/apolloClient.js';
+
 import {ErrorPage, Home, Login, Signup} from './pages';
 import './index.css'
 // Bringing in the required imports from 'react-router-dom' to set up application routing behavior
@@ -35,3 +40,11 @@ const router = createBrowserRouter([
 ]);ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
 );
+/*
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <ApolloProvider client={client}>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+  </ApolloProvider>,
+)*/

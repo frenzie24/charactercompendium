@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "666cb84b41fa64e11ab225eb",
+        "userID": "666cb84b41fa64e11ab225e3",
+        "characterName": "Naoya",
+        "characterClass": "Witch",
+        "health": "1/2",
+        "defense": "+1",
+        "baseStat": ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
+        "skill": ["Arcana:5", "Stealth:3"],
+        "inventory": [
+            "One Spellbook"
+        ],
+        "notes": [
+            "Nothing of note"
+        ]
+    }
+]
