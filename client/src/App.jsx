@@ -9,6 +9,7 @@ import PrimaryAttribute from './components/PrimaryAttribute';
 import LabelView from './components/views/LabelView';
 import LabelContainer from './components/LabelContainer';
 import CharacterSheetView from './components/views/CharacterSheetView';
+import { Outlet } from 'react-router-dom';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -167,6 +168,7 @@ function App() {
   // we need to take this and make a view for the character sheet
   return (
     <>
+  <Outlet />
       <div className='tablebg flex flex-row flex-wrap w-screen justify-center items-start px-5 py5 '>
         <CharacterSheetView HandleChange={handleChange} Items={undefined} />
 

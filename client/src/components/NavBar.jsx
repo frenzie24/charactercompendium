@@ -18,7 +18,6 @@ export default function NavBar() {
         Home
           </Link>
         </li>
-        <li className="nav-item"><Link to="/home" className={currentPage === '/peon' ? 'nav-link active' : 'nav-link'}></Link></li>
         <li className="nav-item"><Link to="/login" className={currentPage === '/login' ? 'nav-link active' : 'nav-link'}></Link></li>
         <li className="nav-item"><Link to="/signup" className={currentPage === '/signup' ? 'nav-link active' : 'nav-link'}></Link></li>
         <li className="nav-item"><Link to="/charactersheet" className={currentPage === '/charactersheet' ? 'nav-link active' : 'nav-link'}></Link></li>
