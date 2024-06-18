@@ -53,5 +53,12 @@ export const QUERY_USER_CHARACTERS = gql`
   query UserCharacters($userId: ID!) {
   userCharacters(userId: $userId) {
     characterName
+      characterClass
+      health
+      defense
+      baseStat
+      skill
+      inventory
+      notes
   }
 }`;

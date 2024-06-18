@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import validateState from "../utils/validateState";
 
 
-const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
+const PrimaryAttribute = ({ Name, Src, HandleChange, Items, id }) => {
     const [name, setName] = useState(Name); // State for attribute name
     const [source, setSource] = useState(validateState(Src, './notfound.jpg')); // State for image source
     const [editMode, setEditMode] = useState(false); // State for edit mode
@@ -13,7 +13,7 @@ const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
     const handleInputChange = (ev) => {
         const { value } = ev.target;
         setValue(value);
-        HandleChange(value);
+        HandleChange(ev, setValue);
     };
 
     const handleBlur = () => {
@@ -21,7 +21,7 @@ const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
     };
 
     const handleClick = () => {
-        setEditMode(true); // Enable edit mode when user clicks on the displayed value
+        setEditMode(!editMode); // Enable edit mode when user clicks on the displayed value
     };
 
     return (
@@ -30,8 +30,10 @@ const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
             {editMode ? (
                 <div className="w-full h-12 text-center">
                     <input
+                        id={name}
                         className="text-center w-28 rounded-lg mb-1"
                         type="text"
+                        name="Primary"
                         value={value}
                         onChange={handleInputChange}
                         onBlur={handleBlur}
@@ -41,7 +43,7 @@ const PrimaryAttribute = ({ Name, Src, HandleChange, Value }) => {
                 </div>
             ) : (
                 <figcaption className="w-full h-12 text-center cursor-pointer" onClick={handleClick}>
-                    {value == "" ? placeholder : value}  
+                    {value == "" ? placeholder : value}
                 </figcaption>
             )}
             <figcaption className="w-full h-12 text-center">{name}</figcaption>
