@@ -7,7 +7,9 @@ import '../App.css'
 // we need to manage state for input, content, and uuid (uuid behaves best when stored as a state variable when setting this up, may not NEED as state but performed best for me)
 // we need to managed input disabled state when user is editing!
 const TextAreaView = ({ placeholder, HandleChange, Items, id }) => {
-    const [input, setInput] = useState('');
+
+    // Input is used to label the container
+    const [label, setInput] = useState('');
     const [content, setContent] = useState('');
     const [uuid, setUuid] = useState(uuidv4());
 
@@ -29,15 +31,15 @@ const TextAreaView = ({ placeholder, HandleChange, Items, id }) => {
 
     // log changes to console
     useEffect(() => {
-        console.log(...['state updated\n', `input: ${input}\ndescription: ${content}`])
-    }, [input, content])
+        console.log(...['state updated\n', `label: ${label}\ndescription: ${content}`])
+    }, [label, content])
 
 
     return (
 
         <section key={uuid} id={id}  className="framebg flex flex-row flex-wrap justify-center h-80 items-end rounded-md w-96 p-2">
             {/*<>*/}
-            <input id="input" className="inputbg h-12 w-[350px] text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={input}></input>
+            <input id="label" className="inputbg h-12 w-[350px] text-center" placeholder={labelPlaceHolder} onChange={handleInputChange} value={label}></input>
             <textarea id="content" className="textareabg w-[360px] h-64 text-center min-h-48" placeholder={contentPlaceHolder} onChange={handleContentChange} value={content}></textarea>
             {/*</>*/}
         </section>

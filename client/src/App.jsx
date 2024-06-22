@@ -66,15 +66,18 @@ const genDummyInputList = (listName) => {
 function App() {
   const [count, setCount] = useState(0)
   const symbol = '+';
+  /*
   let statList = []
   let skillList = []
   let textAreas = []
   let primaryAttributes = [];
   let characterLabels = [];
+*/
+
   const handleClick = (ev) => {
 
   }
-
+/*
   // logic to update/populate empty stat/skill lists
   const buildListData = (list, target, parent) => {
     let id = parent.id;
@@ -245,6 +248,7 @@ function App() {
 //         console.error('Network error details:', err.networkError);
 //     }
 // }
+*/
 
   // we need to take this and make a view for the character sheet3
   return (

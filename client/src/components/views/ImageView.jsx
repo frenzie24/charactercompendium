@@ -18,7 +18,9 @@ const ImageView = ({Src, Caption, useHandleChange}) => {
     const placeholder = "[Click to Update]";
     // pass the new value up to top
     // we may need to also do some work before passing the ev up, ie we need to debug and ensure we're getting the proper value from ev in the hook
-    const handleInputChange = (ev) => { setCaption(ev.target.value)}
+    const handleInputChange = (ev) => { setCaption(ev.target.value)
+        useHandleChange(ev, setCaption) ;
+    }
 
     // filler function for when we handle editing
     // we are probably going to need a hook passed down
@@ -27,10 +29,10 @@ const ImageView = ({Src, Caption, useHandleChange}) => {
         setEditMode(!editMode);
     }
 
-    const handleBlur = () => {
+    const handleBlur = (ev) => {
         setEditMode(false); // Disable edit mode on blur (when user clicks away)
         // Optionally, you can handle saving the caption value here using useHandleChange
-        useHandleChange(caption); // Passing caption up to parent component
+        // Passing caption up to parent component
     };
 
     // filler function for when we handle saving
@@ -46,6 +48,7 @@ const ImageView = ({Src, Caption, useHandleChange}) => {
                 <input
                     className="text-center text-s text-b mb-1"
                     type="text"
+                    name="ImageView"
                     value={caption}
                     onChange={handleInputChange}
                     onBlur={handleBlur}
