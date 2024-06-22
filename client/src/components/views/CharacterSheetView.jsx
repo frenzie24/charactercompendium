@@ -6,11 +6,11 @@ import { ADD_CHARACTER, LOGIN_USER } from '../../utils/mutations';
 import AuthService from "../../utils/auth";
 
 // component to style and render top and bottom views of character sheets ;)
-function CharacterSheetView({ Items }) {
+function CharacterSheetView( ) {
 
     const [editMode, setEditMode] = useState(false);
-    const [baseStat, setBaseStat] = useState([])
-    const [skill, setSkill] = useState([]);
+    const [baseStats, setBaseStats] = useState([])
+    const [skills, setSkills] = useState([]);
 
     const [inventory, setInventory] = useState([])
     const [notes, setNotes] = useState('')
@@ -18,6 +18,9 @@ function CharacterSheetView({ Items }) {
     const [defense, setDefense] = useState('');
     const [characterName, setCharacterName] = useState('');
     const [characterClass, setCharacterClass] = useState('');
+
+    let Items={notes:{Label: 'Test', Content:'Test Content'}
+};
 
     const buildListData = (list, target, parent) => {
         let id = parent.id;
@@ -47,10 +50,10 @@ function CharacterSheetView({ Items }) {
         let name = parent.getAttribute('name');
 
         if (name == 'Stat') {
-            setBaseStat(buildListData(baseStat, target, parent))
+            setBaseStats(buildListData(baseStats, target, parent))
 
         } else {
-            setSkill(buildListData(skill, target, parent))
+            setSkills(buildListData(skills, target, parent))
         }
     }
 
@@ -166,8 +169,8 @@ function CharacterSheetView({ Items }) {
                     characterClass: "Generic",
                     health: "1/2",
                     defense: "+1",
-                    baseStat: ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
-                    skill: ["Arcana:5", "Stealth:3"],
+                    baseStats: ["STR:10", "DEX:14", "CON:12", "WIS:14", "INT:17", "CHA:8"],
+                    skills: ["Arcana:5", "Stealth:3"],
                     inventory: ["One Spellbook"],
                     notes: ["Nothing of note"]
                 },
@@ -206,7 +209,7 @@ function CharacterSheetView({ Items }) {
         console.log('state updated: ' + characterClass)
         console.log('state updated: ' + characterName)
 
-    }, [health, defense, inventory, notes, baseStat, skill, characterName, characterClass])
+    }, [health, defense, inventory, notes, baseStats, skills, characterName, characterClass])
     return (
         <div className="[&_*]:placeholder:text-zinc-900">
             <TopView HandleChange={handleChange} Items={Items} />

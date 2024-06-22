@@ -27,9 +27,9 @@ const ListView = ({ listName, HandleChange, Items }) => {
     const [name, setName] = useState(validateState(listName, "New"))
 // new uuid is used to tie each item to each if Items prop is undefined
     const  uuid = uuidv4();
-    const [id, setId] = useState(validateState(Items? Items[0].id : uuid, uuid))
+    const [id, setId] = useState(validateState(uuid, uuid))
 
-    const [list, setList] = useState(validateState(Items, genDummyInputList(listName, uuid)))
+    const [list, setList] = useState(genDummyInputList(listName, uuid))
     // callback hook to pass to child list items goes here
 
 
