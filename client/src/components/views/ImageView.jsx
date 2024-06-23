@@ -6,6 +6,7 @@
 
 import React, { useState } from "react";
 import '../../App.css'
+import validateState from "../../utils/validateState";
 /*
 image view returns a figure with a caption and input.
 input begins life hidden and will be shown during editing only.
@@ -13,7 +14,7 @@ During editing, figcaption is hidden
 */
 const ImageView = ({Src, Caption, useHandleChange}) => {
     const [src, setSrc] = useState(Src ? Src : './notfound.jpg');
-    const [caption, setCaption] = useState("")
+    const [caption, setCaption] = useState(validateState(Caption, 'Character Name'))
     const [editMode, setEditMode] = useState(false);
     const placeholder = "[Click to Update]";
     // pass the new value up to top

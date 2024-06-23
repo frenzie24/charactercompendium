@@ -29,7 +29,12 @@ function CharacterSheetView( ) {
         skills: {
             Name: 'skills',
             List: ['test1', 'test2']
-        }
+        },
+        characterName: 'Rozberyl',
+        characterLevel: '14',
+        characterClass: "Dragoon",
+        health: 100,
+        defense: 50
 };
 
     const buildListData = (list, target, parent) => {

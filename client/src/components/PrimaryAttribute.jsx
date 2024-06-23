@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import validateState from "../utils/validateState";
 
 
-const PrimaryAttribute = ({ Name, Src, HandleChange, Items, id }) => {
+const PrimaryAttribute = ({ Name, Src, HandleChange, Value, id }) => {
     const [name, setName] = useState(Name); // State for attribute name
     const [source, setSource] = useState(validateState(Src, './notfound.jpg')); // State for image source
     const [editMode, setEditMode] = useState(false); // State for edit mode
-    const [value, setValue] = useState("");  // State for attribute value
+    const [value, setValue] = useState(Value);  // State for attribute value
     const placeholder = "[Click to Update]";
 
     const handleInputChange = (ev) => {

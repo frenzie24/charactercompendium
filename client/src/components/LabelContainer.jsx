@@ -6,9 +6,9 @@ import validateState from "../utils/validateState";
 const LabelContainer = ({Text, Src, HandleChange, Items}) => {
     return(
         <div>
-        <LabelView Text={'Character Level'} Src={"./label.png"} HandleChange={HandleChange} Items={Items} id={1}/>
+        <LabelView Text={Items.characterLevel} Src={"./label.png"} HandleChange={HandleChange} Items={Items} id={1}/>
 
-        <LabelView Text={'Character Class'} Src={"./label.png"} HandleChange={HandleChange} Items={Items} id={2}/>
+        <LabelView Text={Items.characterClass} Src={"./label.png"} HandleChange={HandleChange} Items={Items} id={2}/>
       </div>
     )
 }

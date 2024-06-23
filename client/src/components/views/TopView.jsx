@@ -13,11 +13,11 @@ const TopView = ({HandleChange, Items}) => {
     return (<div className='w-full flex flex-row flex-wrap justify-center items-end mt-12 p-2'>
 
         <LabelContainer HandleChange={HandleChange} Items={Items} />
-        <ImageView Src="./test.png" Caption="" useHandleChange={HandleChange}/>
+        <ImageView Src="./test.png" Caption={Items.characterName} useHandleChange={HandleChange}/>
         <div className='px-8 w-fit h-48 flex flex-row flex-wrap justify-center items-start [&_*]:p-1'>
-            <PrimaryAttribute Name="HP" Src="./heart.png" HandleChange={HandleChange}/>
-            <PrimaryAttribute Name="Defense" Src="./shield.png" HandleChange={HandleChange}/>
-            <PrimaryAttribute Name="Dice" Src="./dicebg.png" HandleChange={HandleChange}/>
+            <PrimaryAttribute Name="HP" Src="./heart.png" HandleChange={HandleChange} Value={Items.health}/>
+            <PrimaryAttribute Name="Defense" Src="./shield.png" HandleChange={HandleChange} Value={Items.defense}/>
+          {/*  <PrimaryAttribute Name="Dice" Src="./dicebg.png" HandleChange={HandleChange}/> */}
         </div>
 
 
