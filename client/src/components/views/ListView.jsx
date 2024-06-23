@@ -19,17 +19,17 @@ const genDummyInputList = (listName, id) => {
   }
 
 
-const ListView = ({ listName, HandleChange, Items }) => {
+const ListView = ({ listName, HandleChange, Items: {Name, List}={Name:'List', List:['NEW LIST']} } ) => {
 
 
 
     // declare state variables and use validateState script to assign their state
-    const [name, setName] = useState(validateState(listName, "New"))
+    const [name, setName] = useState(validateState(Name, List, "New"))
 // new uuid is used to tie each item to each if Items prop is undefined
     const  uuid = uuidv4();
     const [id, setId] = useState(validateState(uuid, uuid))
 
-    const [list, setList] = useState(genDummyInputList(listName, uuid))
+    const [list, setList] = useState(validateState(List ? List : genDummyInputList(Name, uuid), uuid))//genDummyInputList(listName, uuid))
     // callback hook to pass to child list items goes here
 
 
@@ -37,7 +37,7 @@ const ListView = ({ listName, HandleChange, Items }) => {
     const listItems = list.map(entry => {
         //the key needs a unique id that we assign with a new uuid,
         const key = uuidv4();
-        return (<li key={key} id={uuid} name={name} className=" "><Inputview HandleChange={HandleChange} name={name} placeholder={`${entry.value} Name`} Items={Items} Key={key} />  </li>);
+        return (<li key={key} id={uuid} name={name} className=" "><Inputview HandleChange={HandleChange} name={name} placeholder={`${entry} Name`} Value={entry} Key={key} />  </li>);
     }
     )
     //handle input on name

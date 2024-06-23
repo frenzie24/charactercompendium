@@ -5,13 +5,13 @@ import validateState from "../../utils/validateState";
 import { v4 as uuidv4 } from 'uuid';
 // returns a li with input.  key attribute is created through uuid
 
-const Inputview = ({ placeholder, HandleChange, Items, Key }) => {
+const Inputview = ({ placeholder, HandleChange, Value, Key }) => {
     // we need the key state for when we add a list item to the list
     // same with id!
     // key *only* needs to be unique per list so uuid is likely overkill
 
-    const [input, setInput] = useState('');
-    const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3');
+    const [input, setInput] = useState(Value ? Value : 'Your input here <3');
+    //const [_placeholder, setPlaceholder] = useState(placeholder ? placeholder : 'Your input here <3');
     const [editMode, setEditMode] = useState(false);
     const [key, setKey] = (validateState(Key, uuidv4()));
 
@@ -42,7 +42,7 @@ const Inputview = ({ placeholder, HandleChange, Items, Key }) => {
         <>
             {editMode ?
                 (<input id={`input${key}`} type='text' className="inputbg text-black text-center h-8 round-lg w-36" value={input} onChange={handleChange} onBlur={handleBlur} autoFocus></input>) :
-                (<h4 id={`h4${key}`} className=" inputbg text-black text-center round-lg w-36 h-8" onClick={handleClick}>{input ? input : _placeholder}</h4>)}
+                (<h4 id={`h4${key}`} className=" inputbg text-black text-center round-lg w-36 h-8" onClick={handleClick}>{input ? input : input}</h4>)}
         </>
     );
 

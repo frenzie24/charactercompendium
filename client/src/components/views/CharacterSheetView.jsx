@@ -19,7 +19,17 @@ function CharacterSheetView( ) {
     const [characterName, setCharacterName] = useState('');
     const [characterClass, setCharacterClass] = useState('');
 
-    let Items={notes:{Label: 'Test', Content:'Test Content'}
+    let Items={
+        notes:{Label: 'Feats and Description', Content:'Feat Content'},
+        inventory:{Label: 'Inventory', Content:'Inventory content'},
+        baseStats: {
+            Name: 'baseStats',
+            List: ['test1', 'test2']
+        },
+        skills: {
+            Name: 'skills',
+            List: ['test1', 'test2']
+        }
 };
 
     const buildListData = (list, target, parent) => {
