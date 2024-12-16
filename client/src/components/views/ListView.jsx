@@ -37,7 +37,7 @@ const ListView = ({ listName, HandleChange, Items: {Name, List}={Name:'List', Li
     const listItems = list.map(entry => {
         //the key needs a unique id that we assign with a new uuid,
         const key = uuidv4();
-        return (<li key={key} id={uuid} name={name} className=" "><Inputview HandleChange={HandleChange} name={name} placeholder={`${entry} Name`} Value={entry} Key={key} />  </li>);
+        return (<li key={key} id={uuid} name={name} className=" "><Inputview HandleChange={HandleChange} name={name} placeholder={`${entry.Value} Name`} Value={entry.Value} Key={entry.Key} />  </li>);
     }
     )
     //handle input on name

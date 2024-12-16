@@ -17,58 +17,70 @@ function CharacterSheetView( ) {
     const [health, setHealth] = useState('');
     const [defense, setDefense] = useState('');
     const [characterName, setCharacterName] = useState('');
+
+    const [level, setLevel] = useState('');
     const [characterClass, setCharacterClass] = useState('');
 
-    let Items={
+    const [Items, setItems]= useState({
         notes:{Label: 'Feats and Description', Content:'Feat Content'},
         inventory:{Label: 'Inventory', Content:'Inventory content'},
         baseStats: {
             Name: 'baseStats',
-            List: ['test1', 'test2']
+            List: [{Value:'test1', Key:'e'}, {Value:'test2', Key:'e3'}]
         },
         skills: {
             Name: 'skills',
-            List: ['test1', 'test2']
+            List: [{Value:'test1', Key:'s'}, {Value:'test1', Key:'sw'}]
         },
         characterName: 'Rozberyl',
-        characterLevel: '14',
+        level: '14',
         characterClass: "Dragoon",
         health: 100,
         defense: 50
-};
+});
 
-    const buildListData = (list, target, parent) => {
-        let id = parent.id;
+    const buildListData = (List, target, parent) => {
+        let id = target.id;
         const obj = {
             value: target.value,
             id: id,
             inputId: target.id
         }
+        let list = List;
+
 
         if (list.length <= 0) {
             list = [obj];
         } else {
             let found = false;
-            list.map((stat, idx) => {
-                if (stat.inputId === target.id) {
+            list.List.forEach((stat, idx) => {
+                if (stat.Key === target.id) {
                     found = true;
-                    return list[idx] = obj;
+                    return list.List[idx] = obj;
 
                 }
             });
 
-            if (!found) list.push(obj);
-        } return list;
+            if (!found) list.List.push(obj);
+        }
+
+        return list;
     }
     // when a text input component in a list item changes
     const handleListChange = (target, parent) => {
         let name = parent.getAttribute('name');
 
-        if (name == 'Stat') {
-            setBaseStats(buildListData(baseStats, target, parent))
+        if (name == 'baseStats') {
+            let newList = buildListData(baseStats, target, parent)
+            try{
+            setBaseStats(newList)
+            } catch (e) {
+                debugger;
+            }
 
         } else {
-            setSkills(buildListData(skills, target, parent))
+               let newList = buildListData(skills, target, parent)
+            setSkills(newlist)
         }
     }
 
@@ -83,7 +95,7 @@ function CharacterSheetView( ) {
 
         // there are only ever 2 possible character labels, and they always are rendered together
         if (inputId == 1) {
-            setCharacterName(obj)
+            setLevel(obj)
         } else setCharacterClass(obj)
     }
 
@@ -91,7 +103,7 @@ function CharacterSheetView( ) {
         const id = parent.id;
         const inputId = target.id;
         const obj = {
-            value: target.value,
+            Value: target.value,
             id: id,
             inputId: inputId,
             label: target.id
@@ -160,7 +172,7 @@ function CharacterSheetView( ) {
 
         console.log(target.name)
 
-        debugger;
+       // debugger;
 
         // HandleChange(ev, setCallBackState);
     }
@@ -223,8 +235,33 @@ function CharacterSheetView( ) {
         console.log('state updated: ' + notes)
         console.log('state updated: ' + characterClass)
         console.log('state updated: ' + characterName)
+        console.log('state updated: ' + baseStats)
+
+        setItems({
+            health: health,
+            defense: defense,
+            inventory: inventory,
+            notes: notes,
+            baseStats: baseStats,
+            skills: skills,
+            characterName: characterName,
+            characterClass: characterClass
+        })
 
     }, [health, defense, inventory, notes, baseStats, skills, characterName, characterClass])
+
+    useEffect(()=>{
+        setHealth(Items.health);
+        setDefense(Items.defense);
+        setCharacterClass(Items.characterClass);
+        setCharacterName(Items.characterName);
+        setLevel(Items.level);
+        setSkills(Items.skills);
+        setBaseStats(Items.baseStats);
+        setInventory(Items.inventory);
+        setNotes(Items.notes);
+
+    }, [])
     return (
         <div className="[&_*]:placeholder:text-zinc-900">
             <TopView HandleChange={handleChange} Items={Items} />
